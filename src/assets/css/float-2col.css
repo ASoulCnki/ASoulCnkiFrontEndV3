@@ -1,0 +1,18 @@
+/*
+  Get A Float 2 Col DiV
+  Usage: 
+  <div class="main-content">
+    <div class="left"></div>
+    <div class="right"></div>
+  </div>
+*/
+
+.main-content {
+  max-width: 1200px;
+  min-width: 350px;
+  @apply mx-auto px-3 space-y-5 lg:space-y-0 lg:pt-5;
+}
+
+.left { @apply space-y-4 lg:w-3/5 lg:mb-20 lg:float-left; }
+
+.right { @apply lg:w-2/5 lg:float-left lg:pl-4 mb-4; }

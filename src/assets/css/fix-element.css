@@ -1,0 +1,19 @@
+/* 
+  fix some style about element-plus components
+  import it after element-plus css
+*/
+
+/* fix el-dialog */
+.el-dialog {
+  width: 95%;
+  max-width: 1000px;
+  @apply md:w-3/5 xl:w-1/2;
+  @apply rounded-md;
+}
+
+.el-dialog__header, .el-dialog__body, .el-dialog__title {
+  @apply dark:bg-gray-800 dark:text-gray-400;
+}
+
+.el-dialog__body { @apply p-0 pb-2; }
+
