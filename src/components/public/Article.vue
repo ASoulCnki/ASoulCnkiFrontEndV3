@@ -84,7 +84,7 @@ const userName = props.article.author.name
 }
 
 .article-text strong {
-  @apply font-normal text-red-400 bg-gray-100 rounded-sm;
+  @apply font-normal text-red-500 bg-gray-100 rounded-sm;
   @apply dark:text-blue-500 dark:bg-gray-600;
 }
 

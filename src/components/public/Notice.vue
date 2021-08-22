@@ -75,7 +75,7 @@ const start = () => {
 <style scoped>
   .notify {
     @apply w-full h-9 pl-2 text-white text-lg leading-loose;
-    @apply rounded-sm overflow-hidden bg-carol;
+    @apply rounded-md overflow-hidden bg-carol;
   }
 
   .notify-left, .notify-right {

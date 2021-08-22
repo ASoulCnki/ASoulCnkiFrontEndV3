@@ -53,7 +53,7 @@ export function copyContent(response: any) {
   const time = parseTime(new Date())
   let content = '枝网文本复制检测报告(简洁)\n'
   content += `查重时间: ${time}\n`
-  content += `文字复制比: ${response.rate}%\n`
+  content += `总文字复制比: ${response.rate}%\n`
 
   if (response.articleArray.length > 0) {
     content += `相似小作文: ${response.articleArray[0].url}\n`

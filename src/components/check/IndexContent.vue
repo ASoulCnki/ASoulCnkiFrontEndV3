@@ -1,22 +1,19 @@
 <template>
-<div>
+<div class="space-y-4">
   <Notice :content="notice" />
   <div class="text-container">
     <ul class="text-header">
-      <li :class="rateColor">总复制比 <span class="font-mono tracking-wider">{{ response.rate }}%</span></li>
-      <li>
-        <button class="active" @click="getReport" :disabled="!reportable">详情</button>
+      <li :class="rateColor + ' text-sm'">
+        总复制比 <span class="font-mono tracking-wider">{{ response.rate }}%</span>
       </li>
-      <li>
-        <button class="active copy" @click="copy" :disabled="!reportable"><span class="iconfont icon-copy">复制</span></button>
+      <li class="active" @click="text=''" :disabled="!reportable">
+        <span class="iconfont icon-clean">清空</span>
       </li>
-      <li>
-        <button @click="check"
-          :class="'float-right px-2 bg-blue-500 rounded-sm text-gray-200 ' + (isComplete ? 'submit-pedding' : 'submit-ready') " 
-        >
-          <span class="iconfont icon-upload"></span> 
-          {{ isComplete ? '提交' : '查重中' }}
-        </button> 
+      <li class="active copy" @click="copy" :disabled="!reportable">
+        <span class="iconfont icon-copy">复制</span>
+      </li>
+      <li @click="check" class="check">
+        <span class="iconfont icon-upload">{{ isComplete ? '提交' : '查重中' }}</span>   
       </li>
     </ul>
     <textarea
@@ -28,13 +25,13 @@
     <div class="text-status">
       <div class="text-status-item float-left">
         <el-checkbox v-model="isAgreed"></el-checkbox>
-        您已同意<a @click="isProtocolVisible=true" class="url">用户协议</a>
+        我已同意<a @click="isProtocolVisible=true" class="url">用户协议</a>
       </div>
       <div class="text-status-item float-right">{{ typeofText }}</div>
       <div class="text-status-item float-right">{{ text.length }}/{{ maxlength }}</div>
     </div>
   </div>
-  <el-dialog v-model="isProtocolVisible" title="枝网查重用户协议">
+  <el-dialog v-model="isProtocolVisible" title="枝网查重用户协议" width="none" :lock-scroll="false">
     <Protocol/>
   </el-dialog>
   <ArticleList :articleArray="response.articleArray" :rawText="text"/>
@@ -69,18 +66,12 @@ let isAgreed = ref(true)
 const reportable = computed(() => response.startTime != null)
 const typeofText = computed(() => isChracterDraw(text) ? '字符画' : '普通小作文')
 const rateColor = computed(() => {
-  const percent = response.rate
+  const percent = Number(response.rate)
   let color = 'green'
-  if (percent > 25) {
-    color = 'blue' 
-  }
-  if (percent > 50) {
-    color = 'yellow'
-  }
-  if (percent > 75) {
-    color = 'red'
-  }
-  return `text-${color}-500`
+  if (percent > 25) color = 'blue' 
+  if (percent > 50) color = 'yellow'
+  if (percent > 75) color = 'red'
+  return color
 })
 
 const check = async () => {
@@ -136,18 +127,26 @@ const copy = () => {
 }
 
 .text-container {
-  @apply rounded-lg shadow-md overflow-hidden px-2 bg-white;
+  @apply rounded-md shadow-sm overflow-hidden px-2 bg-white;
   @apply dark:text-gray-400 dark:bg-gray-800;
 }
 
-.text-header { @apply divide-x py-2 px-1 text-gray-500 dark:divide-gray-400; }
+.text-header { @apply divide-x py-2 px-0 text-gray-500 dark:divide-gray-400; }
 
 .text-header li { @apply inline px-2 outline-none; }
 .text-header li:first-child { @apply pl-0; }
-.text-header li:last-child { @apply pr-0; }
+.green { @apply text-green-500; }
+.blue { @apply text-blue-500; }
+.yellow { @apply text-yellow-500; }
+.red { @apply text-red-500;}
 
-.active { @apply hover:text-blue-400 dark:hover:text-yellow-500; }
+.active { @apply hover:text-blue-500 dark:hover:text-yellow-500  cursor-pointer; }
 .active:disabled { @apply hover:text-gray-500 cursor-not-allowed; }
+
+.check {
+  @apply float-right px-4 bg-blue-500 cursor-pointer rounded-sm text-gray-200;
+  @apply hover:bg-blue-600 hover:text-gray-100;
+}
 
 .text-input {
   @apply box-border w-full resize-none outline-none border-none block rounded-sm;
@@ -155,12 +154,10 @@ const copy = () => {
   @apply dark:bg-gray-700;
 }
 
-.text-status {
-  @apply py-2 w-full overflow-hidden divide-x-2 pl-1 dark:divide-gray-500;
-}
+.text-status { @apply py-2 w-full overflow-hidden divide-x-2 pl-1 dark:divide-gray-500; }
 
 .text-status-item {
-  min-width: 90px;
+  min-width: 85px;
   @apply inline text-sm text-gray-500 text-center;
 }
 </style>

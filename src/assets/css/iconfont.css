@@ -61,3 +61,11 @@
 .icon-top:before {
   content: "\e646";
 }
+
+.icon-balance:before {
+  content: "\e6cf";
+}
+
+.icon-clean:before {
+  content: "\e60a";
+}

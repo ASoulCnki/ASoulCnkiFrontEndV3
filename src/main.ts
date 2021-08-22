@@ -1,6 +1,6 @@
 import { createApp } from 'vue'
 import App from '@/App.vue'
-import router from '@/router'
+import router from './router'
 import Element from 'element-plus'
 import 'tailwindcss/tailwind.css'
 import '@/assets/css/fix-element.css'

@@ -25,18 +25,17 @@
   </div>
   <Carousel :memberArray="memberArray" />
   <Links/>
-  <!-- <p class="footer">
+  <p class="footer">
     <a href="https://beian.miit.gov.cn/" target="_blank">
       琼ICP备20001476号-2
     </a>
-  </p> -->
+  </p>
 </div>
 </template>
 
 <script setup>
 import Links from '@/components/public/Links.vue'
 import Carousel from '@/components/public/Carousel.vue'
-
 
 const description = [
   {key: '比对库范围：', value: 'b站动态、视频评论区(仅限A-Soul的六个官方账号)', type: 'text'},
@@ -100,6 +99,6 @@ const memberArray = [
 
 .footer {
   font-size: 12px;
-  @apply text-gray-500 text-center;
+  @apply text-gray-500 text-center mb-4;
 }
 </style>

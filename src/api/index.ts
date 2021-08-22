@@ -19,7 +19,7 @@ const instance = axios.create({
 instance.interceptors.request.use(conf => {
   // Since some string cause exception
   // When use get, use encodeURIComponent
-  if (conf.method == 'get' && conf.params) {
+  if (conf.method == 'get' && conf.params && conf.url) {
     let cache = []
     for (const k in conf.params) {
       cache.push(`${k}=${encodeURIComponent(conf.params[k])}`)
@@ -39,11 +39,11 @@ instance.interceptors.request.use(conf => {
 })
 
 instance.interceptors.response.use(
-  response => {
+  (response) : any => {
     // only response.data.code == 0 success
     if (response.data.code != 0) {
       message(response.data.message, 'error')
-      return
+      return undefined
     }
     return response
   },

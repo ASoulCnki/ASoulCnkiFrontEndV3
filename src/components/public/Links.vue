@@ -4,7 +4,7 @@
       <p>关于项目</p>
       <a href="https://github.com/ASoulCnki/ASoulCnki" target="_blank">爬虫</a>
       <a href="https://github.com/ASoulCnki/ASoulCnkiBackEnd" target="_blank">后端</a>
-      <a href="https://github.com/ASoulCnki/ASoulCnkiFrontEnd" target="_blank">前端</a>
+      <a href="https://github.com/ASoulCnki/ASoulCnkiFrontEndV3" target="_blank">前端</a>
       <a href="https://github.com/ASoulCnki/ASoulCnkiBackend/blob/master/api.md" target="_blank">API文档</a>
     </div>
     <div class="footer-links">
@@ -30,7 +30,7 @@
 
 <style scoped>
 .right-footer {
-  @apply flex justify-center w-full text-gray-400 divide-x text-sm mt-4;
+  @apply flex justify-center w-full text-gray-400 divide-x text-sm my-4;
 }
 
 .footer-links { @apply box-border w-1/3 text-center mb-4; }
@@ -41,10 +41,7 @@
   @apply text-gray-500 dark:text-gray-400 hover:underline;
 }
 
-.footer-links a, span {
-  font-size: 13px;
-  /* @apply text-sm; */
-}
+.footer-links a, span { font-size: 13px; }
 
 .footer-links p {
   min-width: 60px;
