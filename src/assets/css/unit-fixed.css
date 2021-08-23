@@ -1,0 +1,33 @@
+/* 
+  返回顶部和移动端翻页组件的通用css
+
+  制造一块悬浮区域和按钮，用法如下
+  <div class="fixed-area">
+    <button class="fixed-button"></button>
+  </div>
+*/
+
+.fixed-element {
+  @apply mr-3 my-2;
+}
+
+.nofix-button {
+  @apply text-white bg-gray-600 rounded-xl shadow-xl cursor-pointer;
+  @apply hover:shadow-inner hover:bg-gray-500 p-3 py-2 opacity-60;
+}
+
+/* 适用于只有一个 svg 的悬浮按钮 */
+.fixed-button {
+  @apply fixed-element nofix-button;
+}
+
+/* 制造一块悬浮区域 */
+.fixed-area {
+  @apply fixed right-7 md:right-10;
+}
+
+/* 返回顶部按钮 */
+.return-top {
+  @apply fixed-button fixed-area;
+  @apply bottom-10;
+}

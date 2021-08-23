@@ -5,8 +5,7 @@
     <div class="tag">tag1 x</div>
     <div class="tag">tag1 x</div>
     <div class="filter">
-      筛选
-      <!-- <span class="iconfont icon-filter"></span> -->
+      <span class="iconfont icon-filter">筛选</span>
     </div>
   </div>
 </template>
@@ -25,5 +24,6 @@
 
 .filter {
   @apply border float-right border-gray-300 inline p-1 text-gray-500 rounded-md align-middle;
+  @apply hover:bg-blue-500 hover:text-white transition-colors;
 }
 </style>

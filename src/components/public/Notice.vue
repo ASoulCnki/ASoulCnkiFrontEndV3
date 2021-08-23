@@ -14,7 +14,7 @@
 
 <script setup>
 
-import { defineProps, onMounted, ref } from 'vue'
+import { onMounted, ref } from 'vue'
 
 defineProps({
   content: Array
@@ -24,20 +24,16 @@ const isScrolling = ref(false)
 const animate = ref(null)
 
 // Mounted on Dom
-const [boxRef, textRef] = [ ref(null), ref(null) ]
-
+const [ boxRef, textRef ] = [ ref(null), ref(null) ]
 
 onMounted(() => {
   window.onresize = () => {
     // if scrolling pass
-    if (!isScrolling.value) {
-      start()
-    }
+    if (isScrolling.value) return
+    start()
   }
   // init scroll
-  window.onload = () => {
-    setTimeout(() => start(), 0)
-  }
+  window.onload = () => { setTimeout(() => start(), 0) }
 })
 
 const start = () => {
@@ -78,10 +74,7 @@ const start = () => {
     @apply rounded-md overflow-hidden bg-carol;
   }
 
-  .notify-left, .notify-right {
-    line-height: 2.25rem;
-    @apply float-left box-border;
-  }
+  .notify-left, .notify-right { @apply float-left box-border leading-loose; }
 
   .notify-left { @apply w-8; }
 

@@ -4,10 +4,10 @@
     <p class="text-red-600 font-bold text-lg">新功能!枝江作文展
       <a href="/rank" class="text-blue-400">点此进入</a>
     </p>
-    <p class="text-sm leading-loose dark:text-gray-300">
+    <p class="top-p">
       枝网原班人马打造，我们自己都溜到停不下来的优秀小作文展示平台
     </p>
-    <p class="text-sm leading-loose dark:text-gray-300">
+    <p class="top-p">
       现提供多种小作文过滤器，详情请点击传送门后查看使用说明
     </p>
   </div>
@@ -90,15 +90,16 @@ const memberArray = [
 
 <style scoped>
 .right-item {
-  @apply w-full text-sm mb-4 rounded-md shadow-md p-2;
-  @apply text-gray-600 bg-gray-50;
+  @apply w-full text-sm mb-4 rounded-md shadow-md p-2 pl-3;
+  @apply text-gray-600 bg-white;
   @apply dark:text-gray-400 dark:bg-gray-800;
 }
+
+.top-p { @apply text-sm leading-loose dark:text-gray-300; }
 
 .description-value { @apply py-2 leading-relaxed block; }
 
 .footer {
-  font-size: 12px;
-  @apply text-gray-500 text-center mb-4;
+  @apply text-gray-500 text-center mb-4 text-xs;
 }
 </style>

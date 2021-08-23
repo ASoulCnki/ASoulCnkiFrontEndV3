@@ -5,6 +5,7 @@ import Element from 'element-plus'
 import 'tailwindcss/tailwind.css'
 import '@/assets/css/fix-element.css'
 import '@/assets/css/iconfont.css'
+import '@/assets/css/unit-fixed.css'
 
 createApp(App)
   .use(Element)

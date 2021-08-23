@@ -36,7 +36,7 @@
 </template>
 
 <script setup>
-import { defineProps, computed } from 'vue'
+import { computed } from 'vue'
 import { message, diffText } from '@/utils'
 import { textToLink } from '@/utils/article/link'
 import clipboard from 'clipboard'

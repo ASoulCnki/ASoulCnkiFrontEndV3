@@ -1,10 +1,10 @@
 <template>
-<div class="space-y-4">
+<div>
   <Notice :content="notice" />
   <div class="text-container">
     <ul class="text-header">
       <li :class="rateColor + ' text-sm'">
-        总复制比 <span class="font-mono tracking-wider">{{ response.rate }}%</span>
+        总复制比 <span class="font-mono tracking-wide">{{ response.rate }}%</span>
       </li>
       <li class="active" @click="text=''" :disabled="!reportable">
         <span class="iconfont icon-clean">清空</span>
@@ -24,7 +24,7 @@
     />
     <div class="text-status">
       <div class="text-status-item float-left">
-        <el-checkbox v-model="isAgreed"></el-checkbox>
+        <el-checkbox v-model="isAgreed" />
         我已同意<a @click="isProtocolVisible=true" class="url">用户协议</a>
       </div>
       <div class="text-status-item float-right">{{ typeofText }}</div>
@@ -44,9 +44,12 @@ import Protocol from '@/components/public/Protocol.vue'
 import Notice from '@/components/public/Notice.vue'
 
 import { ref, reactive, computed, onMounted, watch } from 'vue'
-import api from '@/api'
 import { message, isChracterDraw, copyContent, storage } from '@/utils'
+import api from '@/api'
 import clipboard from 'clipboard'
+
+// max textarea length
+const maxlength = 1000
 
 const notice = ref([
   {message: '查重过程中遇到的问题可以向B站@查重姬Official反馈，反馈地址在页脚 ——枝网项目组'}
@@ -58,7 +61,6 @@ let response = reactive({
 })
 const text = ref('')
 
-const maxlength = 1000
 let isComplete = ref(true)
 let isProtocolVisible = ref(false)
 let isAgreed = ref(true)
@@ -82,8 +84,9 @@ const check = async () => {
   }
 
   const checkText = text.value
-  const cond = !(checkText.length >= 10 && checkText.length <= 1000)
+  const cond = !(checkText.length >= 10 && checkText.length <= maxlength)
 
+  // if invaild length, return
   if (cond) {
     message('小作文字数太少了捏', 'warning')
     return
@@ -101,6 +104,7 @@ const check = async () => {
 
 
 onMounted(() => {
+  // agree state from localStorage
   isAgreed.value = storage.agree.get()
 })
 
@@ -108,6 +112,7 @@ watch(isAgreed, () => {
   storage.agree.set(isAgreed.value)
 })
 
+// copy compare report to clipboard
 const copy = () => {
   const clip = new clipboard('.copy', {
     text: () => copyContent(response)
@@ -127,14 +132,14 @@ const copy = () => {
 }
 
 .text-container {
-  @apply rounded-md shadow-sm overflow-hidden px-2 bg-white;
+  @apply rounded-md shadow-md overflow-hidden px-2 my-4 bg-white;
   @apply dark:text-gray-400 dark:bg-gray-800;
 }
 
 .text-header { @apply divide-x py-2 px-0 text-gray-500 dark:divide-gray-400; }
 
 .text-header li { @apply inline px-2 outline-none; }
-.text-header li:first-child { @apply pl-0; }
+.text-header li:first-child { @apply pl-0 text-sm; }
 .green { @apply text-green-500; }
 .blue { @apply text-blue-500; }
 .yellow { @apply text-yellow-500; }
@@ -144,14 +149,14 @@ const copy = () => {
 .active:disabled { @apply hover:text-gray-500 cursor-not-allowed; }
 
 .check {
-  @apply float-right px-4 bg-blue-500 cursor-pointer rounded-sm text-gray-200;
+  @apply float-right px-6 bg-blue-500 cursor-pointer rounded-sm text-gray-200;
   @apply hover:bg-blue-600 hover:text-gray-100;
 }
 
 .text-input {
   @apply box-border w-full resize-none outline-none border-none block rounded-sm;
   @apply p-2 py-1 break-all h-80 text-sm leading-relaxed tracking-widest;
-  @apply dark:bg-gray-700;
+  @apply dark:bg-gray-700 dark:text-gray-400;
 }
 
 .text-status { @apply py-2 w-full overflow-hidden divide-x-2 pl-1 dark:divide-gray-500; }

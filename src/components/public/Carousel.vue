@@ -18,7 +18,7 @@
 <script setup>
 import { onMounted } from "@vue/runtime-core"
 
-const state = defineProps({
+defineProps({
   memberArray: Array
 })
 
@@ -38,7 +38,7 @@ const lazyLoad = (target) => {
   const conf = { root: null, threshold: [0], rootMargin: '-50px' }
 
   const io = new IntersectionObserver( ( entries, observer ) => {
-    entries.forEach( (entry, i) => {
+    entries.forEach( (entry) => {
       if (entry.isIntersecting) {
         const img = entry.target
         // Since Safari img tag not support img norefer
@@ -63,7 +63,6 @@ onMounted(() => {
 </script>
 
 <style scoped>
-
 .carousel-item h3 { @apply text-center bg-black p-0; }
 
 .member-info { @apply pt-4 m-0 w-full h-full rounded-lg; }
@@ -72,5 +71,5 @@ onMounted(() => {
   @apply w-24 h-24 m-auto rounded-full border-2 overflow-hidden bg-white;
 }
 
-.member-name { @apply m-4 font-bold text-center text-gray-100 text-lg; }
+.member-name { @apply m-4 font-semibold text-center text-gray-100 text-lg; }
 </style>

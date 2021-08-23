@@ -10,8 +10,8 @@ interface CheckResponse {
 }
 
 /**
- * 
- * @param {String} text need checked text
+ * Use Remote check API 
+ * @param {String} text need checked text (10 < text.length < 1000)
  * @returns response startTime, lastUpdete, rate, articleArray
  */
 export async function check(text: string) {
@@ -39,4 +39,3 @@ export async function check(text: string) {
 
   return response
 }
-

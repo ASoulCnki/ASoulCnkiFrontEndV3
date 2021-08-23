@@ -4,26 +4,52 @@
     <!-- <div class="empty" v-if="articleArray.length == 0">
       搜索结果为空，请尝试重新搜索或更换搜索条件
     </div> -->
-    <Article
-      v-for="s in articleArray"
-      :key="s.id"
-      :article="s"
-      v-cloak
-    />
+    <PageChange :total="total" @page="getPage" >
+      <Article
+        v-for="s in articleArray"
+        :key="s.id"
+        :article="s"
+        v-cloak
+      />
+    </PageChange>
   </div>
 </template>
 
 <script setup>
-import Select from './Select.vue'
-import { defineProps, onMounted } from 'vue'
+  import Select from './Select.vue'
+  import { watch, ref } from 'vue'
 
-defineProps({
-  articleArray: {
-    type: Array,
-    default: []
+  defineProps({
+    articleArray: {
+      type: Array,
+      default: []
+    },
+    total: {
+      type: Number,
+      default: 0
+    }
+  })
+
+  const page = ref(1)
+
+  const options = {
+    sortMode: 0,
+    timeRangeMode: 0,
+    pageSize: 10,
+    pageNum: 1
   }
-})
 
+  const emit = defineEmits(['select'])
+
+  const getPage = (val) => {
+    page.value = val
+    return true
+  }
+
+  watch(page, () => {
+    options.pageNum = page.value
+    emit('select', options)
+  })
 </script>
 
 <style>

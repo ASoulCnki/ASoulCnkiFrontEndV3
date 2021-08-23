@@ -37,7 +37,6 @@ export async function ranking(params: RankParams) {
   await instance.get('ranking/', {params})
     .then( (res: AxiosResponse) => {
       const data = res.data.data
-      console.log(res.data);
       response.startTime = parseTime(data.start_time)
       response.lastUpdate = parseTime(data.end_time)
       response.articleArray = handleArticles(data.replies)

@@ -26,10 +26,12 @@
   content: "\e639";
 }
 
+.icon-github { @apply text-black dark:text-gray-200; }
 .icon-github:before {
   content: "\e651";
 }
 
+.icon-bilibili { @apply text-blue-500; }
 .icon-bilibili:before {
   content: "\e69e";
 }
@@ -60,6 +62,16 @@
 
 .icon-top:before {
   content: "\e646";
+}
+
+.icon-right {
+  @apply icon-top;
+  transform: rotateZ(90deg)
+}
+
+.icon-left {
+  @apply icon-top;
+  transform: rotateZ(-90deg)
 }
 
 .icon-balance:before {

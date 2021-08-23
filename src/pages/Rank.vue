@@ -2,6 +2,7 @@
   <div class="main-content">
     <RankContent class="left"
       :articleArray="response.articleArray"
+      :total="response.total"
       @select="getSelect"
     />
     <SideBar class="right" :endTime="response.LastUpdate" />
@@ -15,7 +16,9 @@
   import { reactive, onMounted } from 'vue'
   import api from '@/api'
 
-  let response = reactive({})
+  let response = reactive({
+    total: 0
+  })
 
   onMounted(async () => {    
     const params = { sortMode : 0, timeRangeMode: 0, pageSize: 10, pageNum: 1 }
@@ -39,6 +42,7 @@
   const getSelect = async (select) => {
     const params = select
     await getRanking(params)
+    scrollTo(0, 0)
     return true
   }
 

@@ -40,15 +40,17 @@
       <p class="text">受制于算法精度和评论数据的数量，以上问题我们目前无法解决，请期待后续技术攻关。</p>
     </div>
     <div class="discription">
-      <p><a href="/" class="url">返回枝网查重</a></p>
+      <a href="/" class="url font-semibold tracking-wider">返回枝网查重</a>
     </div>
     <Links/>
   </div>
 </template>
 
 <script setup>
-import Links from '@/components/public/Links.vue'
-defineProps({ endTime: String })
+  import Links from '@/components/public/Links.vue'
+  defineProps({
+    endTime: String
+  })
 </script>
 
 <style scoped>
@@ -75,12 +77,12 @@ defineProps({ endTime: String })
 }
 
 .high {
-  @apply text-blue-600 font-bold;
+  @apply text-blue-600 font-semibold;
   @apply dark:text-yellow-600;
 }
 
 .high-red {
-  @apply text-red-600 font-bold;
+  @apply text-red-600 font-semibold;
   @apply dark:text-red-500;
 }
 
