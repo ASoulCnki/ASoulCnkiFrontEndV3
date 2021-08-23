@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Check from '@/pages/Check.vue'
+import Rank from '@/pages/Rank.vue'
 
 const routes = [
   {
@@ -10,7 +11,7 @@ const routes = [
   {
     path: '/rank',
     name: 'rank',
-    component: () => import('@/pages/Rank.vue')
+    component: Rank
   },
 ]
 

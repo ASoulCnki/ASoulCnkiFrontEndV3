@@ -9,7 +9,7 @@ const NOT_ACTIVE_KEY = 'active'
  * @returns {Array} 
  */
 function getHistory() {
-  const array = JSON.parse(localStorage.getItem(HISTORY_KEY))
+  const array = JSON.parse(localStorage.getItem(HISTORY_KEY) || '[]')
   // if not exist return []
   return Array.isArray(array) ? array : []
 }
@@ -19,7 +19,7 @@ function getHistory() {
  * Uesd by check
  * @param {Object} appendVal 
  */
-function addHistory(appendVal) {
+function addHistory(appendVal: any) {
   let array = getHistory()
   array.push(appendVal)
 
@@ -31,7 +31,7 @@ function addHistory(appendVal) {
  * Clear old History Storage
  */
 function clearHistoty() {
-  localStorage.setItem(HISTORY_KEY, json.stringify([]))
+  localStorage.setItem(HISTORY_KEY, JSON.stringify([]))
 }
 
 // export history module
@@ -51,7 +51,7 @@ function getAgree() {
 }
 
 function setAgree(newVal=false) {
-  localStorage.setItem(AGREE_KEY, newVal)
+  localStorage.setItem(AGREE_KEY, JSON.stringify(newVal))
 }
 
 const agree = {
@@ -68,8 +68,8 @@ function getActive() {
   return !active
 }
 
-function setActive(newVal=false) {
-  localStorage.setItem(NOT_ACTIVE_KEY, true)
+function setActive(newVal=true) {
+  localStorage.setItem(NOT_ACTIVE_KEY, JSON.stringify(newVal))
 }
 
 const active = {

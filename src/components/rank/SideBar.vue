@@ -2,8 +2,8 @@
   <div class="right-content">
     <div class="discription">
       <h2 class="text-xl py-2">枝江作文展</h2>
-      <h2 class="text-lg text-blue-600 dark:text-yellow-500">
-        <span class="iconfont icon-time"></span>上次更新时间: {{ endTime }}
+      <h2 class="text-lg high">
+        <span class="iconfont icon-time -ml-1 mr-1"></span>上次更新时间: {{ endTime }}
       </h2>
       <p class="text">枝网作文展旨在收录原创（原偷小作文），由于爬取评论区有限，数据不一定准确，仅供娱乐。本榜单<span class="high">定期刷新</span>。作文展的收录范围是<span class="high-red">ASoul的六个官方账号</span></p>
       <h2 class="text-lg">名词解释</h2>  
@@ -68,41 +68,21 @@
   @apply dark:text-gray-400 dark:bg-gray-700;
 }
 
-.text {
-  @apply leading-relaxed text-sm my-1;
-}
+.text { @apply leading-relaxed text-sm my-1; }
 
-.list {
-  @apply text-sm leading-relaxed font-bold;
-}
+.list { @apply text-sm leading-relaxed font-semibold; }
 
-.high {
-  @apply text-blue-600 font-semibold;
-  @apply dark:text-yellow-600;
-}
+.high { @apply px-1 text-blue-600 dark:text-yellow-600; }
 
-.high-red {
-  @apply text-red-600 font-semibold;
-  @apply dark:text-red-500;
-}
+.high-red { @apply font-semibold px-1 text-red-600 dark:text-red-500; }
 
-.right-footer {
-  @apply flex w-full text-gray-400 divide-x text-sm mb-8;
-}
+.right-footer { @apply flex w-full text-gray-400 divide-x text-sm mb-8; }
 
-.footer-links {
-  @apply grid grid-cols-1 box-border w-1/3 text-center;
-}
+.footer-links { @apply grid grid-cols-1 box-border w-1/3 text-center; }
 
-.footer-links a, .footer-links p {
-  @apply py-2 grid;
-}
+.footer-links a, .footer-links p { @apply py-2 grid; }
 
-.footer-links a {
-  @apply text-gray-500 dark:text-gray-300 hover:underline;
-}
+.footer-links a { @apply text-gray-500 dark:text-gray-300 hover:underline; }
 
-.footer-links p {
-  @apply text-gray-600 font-semibold dark:text-gray-300;
-}
+.footer-links p { @apply text-gray-600 font-semibold dark:text-gray-300; }
 </style>
