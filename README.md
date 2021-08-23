@@ -4,7 +4,7 @@
 
 对原本的枝网前端进行重构和迁移
 
-现阶段，枝网仍使用原本 Vue2.0 的版本，迁移完成前，新功能也会继续实装
+现阶段，枝网仍使用原本 Vue2.0 的版本，迁移完成前，旧版前端也会继续实装新功能
 
 **待迁移完成后更换新版本并停止维护旧版本**
 
@@ -13,6 +13,7 @@
 1. 从 Vue2 迁移到 Vue3 + TS
 2. 打包工具更换为 Vite
 3. 使用 TailWindCSS 重构样式
+4. 重新调整部分样式，重点是夜间模式配色
 
 ## 如何贡献
 
@@ -21,31 +22,42 @@
 ## 当前进度
 
 ### Check页
-基本迁移完成，输入框上方详情待Result页迁移完成后实装
+  基本迁移完成，输入框上方详情待Result页迁移完成后实装
 
-#### 尚待完成的部分
-ElDialog 样式问题: 由于ElDialog上携带style="width:50%",对窄屏体验不佳，需寻找方法实现响应式
+#### 新特性
+  1. 一键清除文本框
 
-可行的方法(不优雅):通过window.onresize 监听窗口大小，改变ElDialog上的width属性
+#### 待实装新特性
+  1. 支持查看自己的查询历史，并可以清空(使用localStorage)
+
+#### 其他
+  只需要在 ElDialog 的标签上添加 `width="none"` 就可以关闭 Element-Plus 默认添加的 width
 
 ### Rank页
-  尚待迁移，目前只封装了接口，简单写了页面
+  1. 页面基本重构完成
+  2. 添加页码切换功能
+
+#### 新特性
+  1. 页码切换响应式布局，窄屏时自动悬浮屏幕右侧
+  2. 使用方向键 `←` `→` 翻页
 
 #### 尚未完成的部分
 
 1. 条件筛选组件
-2. 页面切换
-
 
 ### Result页
-
-  尚未迁移
+  尚未迁移。
+  由于用户使用次数较少，新版本可能会移除该功能
 
 ## 其他
 
 1. 目前 Element-Plus 没有局部引入，构建后体积较大，后续配置局部引入
-
-      备忘: 目前使用的组件 ElCheckBox ElDialog ElCarousel ElCarouselItem
+      
+      备忘: 目前使用的组件 
+      - ElCheckBox
+      - ElDialog
+      - ElCarousel
+      - ElCarouselItem
 
 2. 接口文档参见[这里](https://github.com/ASoulCnki/ASoulCnkiBackend/blob/master/api.md)
 
@@ -72,6 +84,9 @@ src 源码目录
     ├── check    check页支持函数(数据格式转换)
     └── rank     rank页支持函数
 ```
+
+util部分功能待添加单元测试？
+
 ## 安装
 
 ```bash
@@ -90,4 +105,10 @@ npm run dev
 
 ```bash
 npm run build
+```
+
+### 本地预览构建产物
+
+```bash
+npm run serve
 ```
