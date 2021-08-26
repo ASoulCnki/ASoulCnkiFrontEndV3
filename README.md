@@ -1,4 +1,4 @@
-# AsoulCnkiFEPlus
+# AsoulCnkiFrontEndV3
 
 ![index](markdown/index.png)
 
@@ -12,7 +12,7 @@
 
 1. 从 Vue2 迁移到 Vue3 + TS
 2. 打包工具更换为 Vite
-3. 使用 TailWindCSS 重构样式
+3. 使用 WindiCSS 重构样式
 4. 重新调整部分样式，重点是夜间模式配色
 
 ## 如何贡献
@@ -31,22 +31,24 @@
   1. 支持查看自己的查询历史，并可以清空(使用localStorage)
 
 #### 其他
-  只需要在 ElDialog 的标签上添加 `width="none"` 就可以关闭 Element-Plus 默认添加的 width
+  只需要在 ElDialog 的标签上添加 `width="none"` 就可以禁用 Element-Plus 默认添加的 width
 
 ### Rank页
   1. 页面基本重构完成
   2. 添加页码切换功能
 
 #### 新特性
-  1. 页码切换响应式布局，窄屏时自动悬浮屏幕右侧
+  1. 页码切换悬浮屏幕右侧
   2. 使用方向键 `←` `→` 翻页
 
 #### 尚未完成的部分
 
-1. 条件筛选组件
+  1. 待添加条件筛选组件在顶部框显示当前筛选的条件
+  2. 待修复条件筛选组件和换页组件冲突产生的BUG
 
 ### Result页
   尚未迁移。
+
   由于用户使用次数较少，新版本可能会移除该功能
 
 ## 其他
