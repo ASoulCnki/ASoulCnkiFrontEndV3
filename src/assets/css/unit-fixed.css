@@ -13,7 +13,7 @@
 
 .nofix-button {
   @apply text-white bg-gray-600 rounded-xl shadow-xl cursor-pointer;
-  @apply hover:shadow-inner hover:bg-gray-500 p-3 py-2 opacity-60;
+  @apply hover:(shadow-inner bg-gray-500) p-3 py-2 opacity-60;
 }
 
 /* 适用于只有一个 svg 的悬浮按钮 */

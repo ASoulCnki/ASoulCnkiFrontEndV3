@@ -79,19 +79,16 @@ const start = () => {
   .notify-left { @apply w-8; }
 
   .notify-right {
-    width: calc(100% - 2.25rem);
-    @apply tracking-widest overflow-hidden whitespace-nowrap font-medium;
+    @apply w-[calc(100%-2.25rem)] tracking-widest overflow-hidden whitespace-nowrap font-medium;
   }
   
   .notify-text { @apply inline; }
 
   .notify-text-padding {
-    @apply w-full;
-    padding: 0 100%;
+    @apply w-full px-[100%];
   }
 
   .notify-text-padding span {
-    margin: 0 20%;
     @apply text-left m-auto;
   }
 

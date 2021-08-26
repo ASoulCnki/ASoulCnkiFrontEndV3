@@ -1,5 +1,6 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
+import WindiCSS from 'vite-plugin-windicss'
 import VitePluginComponents, { ElementPlusResolver } from 'vite-plugin-components'
 import styleImport from 'vite-plugin-style-import'
 
@@ -7,6 +8,7 @@ import styleImport from 'vite-plugin-style-import'
 export default defineConfig({
   plugins: [
     vue(),
+    WindiCSS(),
     VitePluginComponents({
       customComponentResolvers: [ElementPlusResolver()],
     }),

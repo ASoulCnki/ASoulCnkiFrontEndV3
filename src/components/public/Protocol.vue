@@ -68,8 +68,7 @@
 ol { @apply list-decimal; }
 
 .protocol-content {
-  height: 24rem;
-  @apply box-border w-full px-4 leading-relaxed break-normal overflow-y-scroll;
+  @apply h-[24rem] box-border w-full px-4 leading-relaxed break-normal overflow-y-scroll;
 }
 
 .protocol-content ol { @apply break-all pl-4; }

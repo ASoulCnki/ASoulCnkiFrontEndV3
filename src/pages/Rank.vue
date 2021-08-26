@@ -13,7 +13,8 @@
   import RankContent from '@/components/rank/RankContent.vue'
   import SideBar from '@/components/rank/SideBar.vue'
 
-  import { reactive, onMounted } from 'vue'
+  import { reactive, onMounted, watch, computed } from 'vue'
+  import { useStore } from 'vuex'
   import api from '@/api'
 
   let response = reactive({
@@ -38,13 +39,29 @@
     response.total = data.total
   }
 
-  // get ranking by emit select params
-  const getSelect = async (select) => {
-    const params = select
-    await getRanking(params)
-    scrollTo(0, 0)
-    return true
+  const store = useStore()
+
+  const page = computed(() => store.state.page)
+  const params = computed(() => store.state.params)
+
+  watch(page, async () => watchGet())
+
+  watch(params, async () => {
+    if (page.value == 1) {
+      watchGet()
+    } else {
+      store.commit('setPage', 1)
+    }
+  })
+
+  const watchGet = async () => {
+    const rankParams = params.value
+    rankParams.pageNum = page.value
+    rankParams.pageSize = 10
+    await getRanking(rankParams)
   }
+
+  // get ranking by emit select params
 
 </script>
 

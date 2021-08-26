@@ -60,17 +60,15 @@
   content: "\e62c";
 }
 
-.icon-top:before {
+.icon-top:before, .icon-right:before, .icon-left:before {
   content: "\e646";
 }
 
 .icon-right {
-  @apply icon-top;
   transform: rotateZ(90deg)
 }
 
 .icon-left {
-  @apply icon-top;
   transform: rotateZ(-90deg)
 }
 
@@ -80,4 +78,8 @@
 
 .icon-clean:before {
   content: "\e60a";
+}
+
+.icon-null:before {
+  content: "\e708";
 }

@@ -37,7 +37,7 @@
 
 .footer-links a { @apply hover:underline; }
 
-.footer-links a, span { font-size: 13px; }
+.footer-links a, span { @apply text-[13px] leading-relaxed }
 
 .footer-links p { @apply font-semibold; }
 </style>

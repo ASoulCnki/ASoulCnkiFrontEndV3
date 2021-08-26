@@ -1,5 +1,5 @@
 <template>
-  <div class="page-sm">
+  <div class="page-sm fixed-area">
     <div class="fixed-button bottom-64" @click="sub">
       <div class="iconfont icon-top icon-left"/>
     </div>
@@ -11,22 +11,11 @@
     </div>
   </div>
   <slot></slot>
-  <div class="page-lg">
-    <div class="nofix-button inline-block" @click="sub">
-      <div class="iconfont icon-top icon-left"/>
-    </div>
-    <div class="inline-block tracking-wider text-gray-600 dark:text-gray-400">
-      第<input type="text" class="page-input mx-2" v-model.number.lazy="currPage">页 / 共
-      <span class="font-mono"> {{ totalPage }} </span> 页
-    </div>
-    <div class="nofix-button inline-block" @click="add">
-      <div class="iconfont icon-top icon-right"/>
-    </div>
-  </div>
 </template>
 
 <script setup>
   import { ref, watch, computed, onMounted } from 'vue'
+import { useStore } from 'vuex'
 
   onMounted(() => {
     // support arrow key change page
@@ -60,12 +49,14 @@
     timer = setTimeout(() => cb(), delay)
   }
 
+  const store = useStore()
+
   watch(currPage, (newVal, oldVal) => {
     if (newVal < 1 || newVal > totalPage.value) {
       currPage.value = oldVal
       return
     }
-    emit('page', currPage.value)
+    store.commit('setPage', newVal)
   })
 
 </script>
@@ -74,10 +65,10 @@
 @import url('@/assets/css/unit-fixed.css');
 
 /* moblie fixed page changer */
-.page-sm { @apply fixed-area bottom-24 space-y-3 pb-2 lg:hidden; }
+.page-sm { @apply bottom-24 space-y-3 pb-2; }
 
 /* wide screen use page changer at bottom */
-.page-lg { @apply box-border hidden lg:flex justify-center space-x-5 mt-4; }
+/* .page-lg { @apply box-border hidden lg:flex justify-center space-x-5 mt-4; } */
 
 /* [废案]另一种宽屏悬浮的页面切换,存在样式问题 */
 /* .page-lg { @apply box-border w-4/5 bottom-16 absolute flex space-x-5 justify-center;} */
@@ -85,6 +76,6 @@
 .page-input {
   @apply outline-none w-10 h-10 p-2 text-sm text-center text-gray-600 opacity-75;
   @apply box-border overflow-hidden rounded-xl font-mono focus:opacity-100;
-  @apply dark:bg-gray-500 dark:text-gray-300;
+  @apply dark:(bg-gray-500 text-gray-300);
 }
 </style>

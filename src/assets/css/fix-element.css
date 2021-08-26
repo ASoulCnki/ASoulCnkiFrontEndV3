@@ -6,14 +6,12 @@
 /* fix el-dialog */
 
 .el-dialog {
-  width: 90%;
-  max-width: 1000px;
-  @apply md:w-3/4 lg:w-3/5 xl:w-1/2;
+  @apply max-w-[1000px] w-[90%] md:w-3/4 lg:w-3/5 xl:w-1/2;
   @apply rounded-lg;
 }
 
 .el-dialog__header, .el-dialog__body, .el-dialog__title {
-  @apply dark:bg-gray-800 dark:text-gray-400;
+  @apply dark:(bg-gray-800 text-gray-400);
 }
 
 .el-dialog__body { @apply p-0 pb-2; }

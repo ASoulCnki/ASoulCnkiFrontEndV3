@@ -65,7 +65,7 @@
 .discription {
   @apply box-border w-full px-3 py-2 mb-5 rounded-md shadow-md;
   @apply bg-gray-50 text-gray-700;
-  @apply dark:text-gray-400 dark:bg-gray-700;
+  @apply dark:(text-gray-400 bg-gray-700);
 }
 
 .text { @apply leading-relaxed text-sm my-1; }

@@ -65,9 +65,9 @@ const userName = props.article.author.name
 
 <style>
 .article {
-  @apply w-full p-2 mx-auto text-sm mt-3 mb-4 border border-gray-200;
-  @apply bg-gray-100 text-gray-600 rounded-md shadow-md;
-  @apply dark:text-gray-400 dark:bg-gray-700 dark:border-gray-800; 
+  @apply w-full p-2 mx-auto text-sm mb-4 border rounded-md shadow-md;
+  @apply bg-gray-50 text-gray-600 border-gray-200;
+  @apply dark:(text-gray-400 bg-gray-700 border-gray-800); 
 }
 
 .article-header { @apply px-1 pb-2 divide-x; }
@@ -75,17 +75,19 @@ const userName = props.article.author.name
 .right-button { @apply inline float-right pl-2 cursor-pointer; }
 
 .hover {
-  @apply cursor-pointer hover:text-blue-400 dark:hover:text-yellow-500;
+  @apply cursor-pointer;
+  @apply hover:(text-blue-400 dark:text-yellow-500);
 }
 
 .article-text {
-  @apply p-2 rounded-md text-sm leading-relaxed break-all whitespace-pre-wrap;
-  @apply bg-gray-200 dark:bg-gray-800 dark:text-gray-400;
+  @apply p-2 rounded-md text-sm bg-gray-200;
+  @apply leading-relaxed break-all whitespace-pre-wrap;
+  @apply dark:(bg-gray-800 text-gray-400);
 }
 
 .article-text strong {
-  @apply font-normal text-red-500 bg-gray-100 rounded-sm;
-  @apply dark:text-blue-500 dark:bg-gray-600;
+  @apply font-normal rounded-sm text-red-500 bg-gray-100;
+  @apply dark:(text-blue-500 bg-gray-600);
 }
 
 .article-text a { @apply text-blue-500 dark:text-yellow-500; }
@@ -93,7 +95,8 @@ const userName = props.article.author.name
 .article-footer { @apply grid grid-cols-2 md:grid-cols-4 pt-2; }
 
 .footer-attr {
-  @apply text-left text-sm font-mono hover:text-gray-800 dark:hover:text-gray-300;
+  @apply text-left text-sm font-mono;
+  @apply hover:(text-gray-800 dark:text-gray-300);
 }
 
 .footer-attr .iconfont { @apply mx-2; }

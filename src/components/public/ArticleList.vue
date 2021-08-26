@@ -31,13 +31,11 @@ const isMarked = ref(false)
 <style scoped>
 
 .is-marked {
-  @apply w-full p-2 shadow-md rounded-md bg-gray-50 text-gray-600;
-  @apply dark:text-gray-400 dark:bg-gray-700;
+  @apply w-full p-2 mb-4 shadow-md rounded-md bg-gray-50 text-gray-600;
+  @apply dark:(text-gray-400 bg-gray-700);
 }
 
 .button {
-  padding-top: 2px;
-  padding-bottom: 2px;
-  @apply cursor-pointer bg-blue-400 px-2 text-gray-200 rounded-sm;
+  @apply py-[2px] cursor-pointer bg-blue-400 px-2 text-gray-200 rounded-sm;
 }
 </style>
