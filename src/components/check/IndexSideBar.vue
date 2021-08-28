@@ -35,7 +35,7 @@
 
 <script setup lang="ts">
 import Links from '@/components/public/Links.vue'
-import MembersCarousel from '@/components/public/AsoulMembersCarousel/MembersCarousel.vue'
+import MembersCarousel from '@/components/public/MembersCarousel/MembersCarousel.vue'
 
 const description = [
   {key: '比对库范围：', value: 'b站动态、视频评论区(仅限A-Soul的六个官方账号)', type: 'text'},
