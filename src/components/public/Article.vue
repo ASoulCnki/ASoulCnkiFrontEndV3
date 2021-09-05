@@ -3,14 +3,16 @@
     <div class="article-header">
       <div class="user inline">
         <span class="iconfont icon-user mr-1"></span>
-        <a :href="userLink" target="_blank" class="hover">
+        <a :href="userLink" target="_blank" class="hover" rel="noreferrer">
           <span class="hidden sm:inline">{{ userName }}</span>
           <span class="sm:hidden">{{ userName.substr(0,5) + '...' }}</span>
         </a>
         <span class="text-green-500 px-2" v-if="article.originId == -1">[原创|原偷]</span>
       </div>
-      <div class="right-button text-blue-500 hover">
-        <a :href="article.url" target="_blank"><span class="iconfont icon-link" />链接</a>
+      <div class="right-button text-blue-600 hover">
+        <a :href="article.url"
+          target="_blank" rel="noreferrer"
+        ><span class="iconfont icon-link" />链接</a>
       </div>
       <div class="right-button hover pr-2 copy" @click="copy">
         <span class="iconfont icon-copy" />复制

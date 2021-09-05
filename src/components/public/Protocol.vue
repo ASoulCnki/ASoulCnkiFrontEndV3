@@ -5,7 +5,7 @@
     <h3>一、定义及解释</h3>
     <ol>
       <li>用户：指符合本协议规定的条件，使用本服务的单位或个人。</li>
-      <li>枝网查重平台：开发者为有小作文查重需求的用户提供的查重平台。枝网查重平台以Apache-2.0许可证开源于 <a href="https://github.com/ASoulCnki" target="_blank">ASoulCnki</a> </li>
+      <li>枝网查重平台：开发者为有小作文查重需求的用户提供的查重平台。枝网查重平台以Apache-2.0许可证开源于 <a href="https://github.com/ASoulCnki" target="_blank" rel="noreferrer">ASoulCnki</a> </li>
       <li>枝网查重服务：指开发者按照本协议约定通过该枝网查重平台向用户提供的小作文查重服务。</li>
     </ol>
 

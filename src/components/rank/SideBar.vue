@@ -21,7 +21,7 @@
       </div>
       <div class="discription">
       <h2 class="pt-2">问题反馈
-        <a href="https://t.bilibili.com/551286754984977322" class="text-blue-500" target="_blank">[传送门]</a>
+        <a href="https://t.bilibili.com/551286754984977322" class="text-blue-500" target="_blank" rel="noreferrer">[传送门]</a>
       </h2>
       <p class="text">如果使用过程中发现问题，欢迎反馈动态评论或私信反馈，联系方式位于<b class="high">页脚</b>，包括但不限于:</p>
       <ol class="list">
@@ -47,7 +47,7 @@
 </template>
 
 <script setup>
-  import Links from '@/components/public/Links.vue'
+  import Links from '@/components/public/Links/Links.vue'
   defineProps({
     endTime: String
   })

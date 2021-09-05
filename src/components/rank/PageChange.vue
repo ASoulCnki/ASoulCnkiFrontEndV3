@@ -4,7 +4,9 @@
       <div class="iconfont icon-top icon-left"/>
     </div>
     <div class="fixed-element">
-      <input type="text" class="page-input" v-model.number.lazy="currPage">
+      <label>
+        <input type="text" class="page-input" v-model.number.lazy="currPage">
+      </label>
     </div>
     <div class="fixed-button bottom-40" @click="add">
       <div class="iconfont icon-top icon-right"/>

@@ -38,5 +38,5 @@ const isApplePath = !isChrome && isSafari && !isWin && !isLinux
   @apply w-24 h-24 m-auto rounded-full border-2 overflow-hidden bg-white;
 }
 
-.member-name { @apply m-4 font-semibold text-center text-gray-100 text-lg; }
+.member-name { @apply m-4 font-semibold text-center text-white text-lg; }
 </style>

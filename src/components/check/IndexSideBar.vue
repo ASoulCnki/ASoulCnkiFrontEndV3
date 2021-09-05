@@ -18,9 +18,6 @@
     <p v-for="item in description" :key="item.key" class="text-sm">
       <b>{{item.key}}</b>
       <em v-if="item.type == 'text'" class="description-value">{{item.value}}</em>
-      <em v-if="item.type == 'link'">
-        <a :href="item.value.href" class="description-value">{{item.value.text}}</a>
-      </em>
     </p>
   </div>
   <MembersCarousel />
@@ -34,7 +31,7 @@
 </template>
 
 <script setup lang="ts">
-import Links from '@/components/public/Links.vue'
+import Links from '@/components/public/Links/Links.vue'
 import MembersCarousel from '@/components/public/MembersCarousel/MembersCarousel.vue'
 
 const description = [

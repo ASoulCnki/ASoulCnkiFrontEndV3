@@ -11,7 +11,7 @@
         <div v-if="['multi', 'single'].includes(filter.type)" class="inline-block">
           <label 
             v-for="(option) in filter.options"
-            :key="option.value"
+            :key="option.value?.toString()"
           >
             <input v-if="filter.type == 'single'" type="radio" class="hidden checkbox"
               :value="option.value" v-model="data[index]"
