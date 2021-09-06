@@ -12,8 +12,8 @@
 </template>
 
 <script setup>
-  import { watch, ref, computed } from 'vue'
-import { useStore } from 'vuex'
+  import { watch, computed } from 'vue'
+  import { useStore } from 'vuex'
 
   defineProps({
     articleArray: {
@@ -35,8 +35,6 @@ import { useStore } from 'vuex'
     pageSize: 10,
     pageNum: 1
   }
-
-  const emit = defineEmits(['select'])
 
   watch(page, () => {
     options.pageNum = page.value

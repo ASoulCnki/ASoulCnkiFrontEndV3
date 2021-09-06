@@ -44,6 +44,7 @@
 import { ref, onMounted } from 'vue'
 import { arrayToParams, RankFilter } from '../../utils/rank/select'
 import { useStore } from 'vuex'
+import PageChange from './PageChange.vue'
 
 onMounted(() => {
   reset()
@@ -52,8 +53,6 @@ onMounted(() => {
 defineProps({
   total: Number
 })
-
-const emit = defineEmits(['select'])
 
 const store = useStore()
 

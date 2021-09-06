@@ -9,8 +9,8 @@
       <a v-for="link in group.links" :key="link.name"
         :href="link.url" target="_blank" rel="noreferrer"
       >
-        <span :class="'iconfont ' + link.icon" v-if="link.icon">BiliBili</span>
-        <span v-else>{{link.name}}</span>
+        <span :class="'iconfont ' + link.icon" v-if="link.icon">{{ link.name }}</span>
+        <span v-else>{{ link.name }}</span>
       </a>
     </div>
   </div>

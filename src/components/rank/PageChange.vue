@@ -16,40 +16,31 @@
 </template>
 
 <script setup>
-  import { ref, watch, computed, onMounted } from 'vue'
-import { useStore } from 'vuex'
-
-  onMounted(() => {
-    // support arrow key change page
-    document.addEventListener('keydown', e => {
-      // out of range handle in watch()
-      if (e.key == "ArrowRight") add()
-      if (e.key == "ArrowLeft") sub()
-    })
-  })
-
-  const pageSize = 10 // default pageSize
+  import { ref, watch, computed } from 'vue'
+  import { useStore } from 'vuex'
+  import { useDebounceFn, get, onKeyUp } from '@vueuse/core'
 
   const props = defineProps({
     total: Number // Total num of all articles
   })
-  const emit = defineEmits(['page'])
 
+  const pageSize = 10 // default pageSize
   const currPage = ref(1)
   const totalPage = computed(() => Math.ceil(props.total / pageSize) )
 
-  // handled index out of range here ( has debounced )
-  const sub = () => debounce(() => { if (currPage.value > 1) currPage.value-- }, debounceDelay)
-  const add = () => debounce(() => { if (currPage.value < totalPage.value) currPage.value++ }, debounceDelay)
-
-  let timer
   const debounceDelay = 600 // mill seconds
-  const debounce = (cb, delay) => { // delay: mill seconds
-    if (timer) {
-      clearTimeout(timer)
-    }
-    timer = setTimeout(() => cb(), delay)
-  }
+
+  // handled index out of range here ( has debounced )
+  const sub = useDebounceFn(() => {
+    if (get(currPage) > 1) currPage.value--
+  }, debounceDelay)
+  const add = useDebounceFn(() => {
+    if (get(currPage) < get(totalPage)) currPage.value++
+  }, debounceDelay)
+
+  // add KeyboardEvent
+  onKeyUp('ArrowRight', add)
+  onKeyUp('ArrowLeft', sub)
 
   const store = useStore()
 

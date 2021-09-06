@@ -12,7 +12,7 @@
     </p>
   </div>
   <div class="right-top-description right-item pb-6">
-    <h3 class="description-title dark:text-gray-300 text-lg pb-2">
+    <h3 class="dark:text-gray-300 text-lg pb-2">
       枝网查重系统介绍
     </h3>   
     <p v-for="item in description" :key="item.key" class="text-sm">
@@ -23,7 +23,7 @@
   <MembersCarousel />
   <Links/>
   <p class="footer">
-    <a href="https://beian.miit.gov.cn/" target="_blank">
+    <a href="https://beian.miit.gov.cn/" target="_blank" rel="noreferrer">
       琼ICP备20001476号-2
     </a>
   </p>
@@ -48,9 +48,9 @@ const description = [
   @apply dark:text-gray-400 dark:bg-gray-800;
 }
 
-.top-p { @apply text-sm leading-loose dark:text-gray-300; }
+.top-p { @apply text-sm leading-loose dark:text-gray-400; }
 
-.description-value { @apply py-2 leading-relaxed block; }
+.description-value { @apply py-2 leading-normal block; }
 
 .footer {
   @apply text-gray-500 text-center mb-4 text-xs;
