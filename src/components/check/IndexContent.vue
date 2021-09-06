@@ -38,7 +38,7 @@
 </div>
 </template>
 
-<script setup>
+<script lang="ts" setup>
 import ArticleList from '@/components/public/ArticleList.vue'
 import Protocol from '@/components/public/Protocol.vue'
 import Notice from '@/components/public/Notice.vue'
@@ -47,6 +47,7 @@ import { ref, reactive, computed, onMounted, watch } from 'vue'
 import { message, isChracterDraw, copyContent, storage } from '@/utils'
 import api from '@/api'
 import clipboard from 'clipboard'
+import { serverInfo } from '@/api/mulltiServer/types'
 
 // max textarea length
 const maxlength = 1000
@@ -55,9 +56,9 @@ const notice = ref([
   {message: '查重过程中遇到的问题可以向B站@查重姬Official反馈，反馈地址在页脚 ——枝网项目组'}
 ])
 
-let response = reactive({
+let response = reactive<any>({
   rate: (0).toFixed(2),
-  articleArray: []
+  articleArray: [],
 })
 const text = ref('')
 
@@ -65,7 +66,7 @@ let isComplete = ref(true)
 let isProtocolVisible = ref(false)
 let isAgreed = ref(true)
 
-const reportable = computed(() => response.startTime != null)
+const reportable = computed(() => response.startTime)
 const typeofText = computed(() => isChracterDraw(text) ? '字符画' : '普通小作文')
 const rateColor = computed(() => {
   const percent = Number(response.rate)
@@ -92,7 +93,31 @@ const check = async () => {
     return
   }
 
-  const data = await api.check(text.value)
+  const serverInfo:serverInfo[] = [
+    {
+      name:'枝网查重',
+      url: 'https://asoulcnki.asia/v1/api/check'
+    },
+    {
+      name:'枝网查重',
+      url: 'https://asoulcnki.asia/v1/api/check'
+    },
+    {
+      name:'枝网查重',
+      url: 'https://asoulcnki.asia/v1/api/check'
+    },
+    {
+      name:'枝网查重',
+      url: 'https://asoulcnki.asia/v1/api/check'
+    },
+    {
+      name:'枝网查重',
+      url: 'https://asoulcnki.asia/v1/api/check'
+    },
+  ]
+
+  // const data = await api.check(text.value)
+  const data = await api.allCheck(serverInfo, {data: {text: text.value}, method:'post'})
   response.rate = data.rate
   response.articleArray = data.articleArray
   response.startTime = data.startTime
@@ -145,11 +170,11 @@ const copy = () => {
 .yellow { @apply text-yellow-500; }
 .red { @apply text-red-500;}
 
-.active { @apply hover:text-blue-500 dark:hover:text-yellow-500  cursor-pointer; }
+.active { @apply hover:text-blue-500 dark:(hover:text-yellow-500 text-gray-400) cursor-pointer; }
 .active:disabled { @apply hover:text-gray-500 cursor-not-allowed; }
 
 .check {
-  @apply float-right px-6 bg-blue-500 cursor-pointer rounded-sm text-gray-200;
+  @apply float-right px-6 bg-blue-500 cursor-pointer rounded text-white;
   @apply hover:bg-blue-600 hover:text-gray-100;
 }
 
@@ -163,6 +188,6 @@ const copy = () => {
 
 .text-status-item {
   min-width: 85px;
-  @apply inline text-sm text-gray-500 text-center;
+  @apply inline text-sm text-gray-500 text-center dark:text-gray-400;
 }
 </style>

@@ -7,7 +7,7 @@
 
 import axios from "axios";
 import { message } from "../utils";
-import { check } from './check'
+import { check, allCheck } from './check'
 import { ranking } from './rank'
 
 const instance = axios.create({
@@ -54,7 +54,8 @@ instance.interceptors.response.use(
 
 const api = {
   check,
-  ranking
+  allCheck,
+  ranking,
 }
 
 export { instance }
