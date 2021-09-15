@@ -1,5 +1,5 @@
 <template>
-  <div class="notify bg-blue-400">
+  <div class="bg-blue-400 notify">
     <div class="notify-left">
       <span class="iconfont icon-message" />
     </div>
@@ -74,13 +74,13 @@ const start = () => {
 
 <style scoped>
 .notify {
-  @apply w-full h-9 pl-2 text-white text-lg leading-loose;
-  @apply rounded-md overflow-hidden bg-carol;
+  @apply h-9 text-white text-lg leading-loose w-full pl-2;
+  @apply bg-carol rounded-md overflow-hidden;
 }
 
 .notify-left,
 .notify-right {
-  @apply float-left box-border leading-loose;
+  @apply leading-loose float-left box-border;
 }
 
 .notify-left {
@@ -88,7 +88,7 @@ const start = () => {
 }
 
 .notify-right {
-  @apply w-[calc(100%-2.25rem)] tracking-widest overflow-hidden whitespace-nowrap font-medium;
+  @apply font-medium tracking-widest w-[calc(100%-2.25rem)] overflow-hidden whitespace-nowrap;
 }
 
 .notify-text {
@@ -100,7 +100,7 @@ const start = () => {
 }
 
 .notify-text-padding span {
-  @apply text-left m-auto;
+  @apply m-auto text-left;
 }
 
 .iconfont {

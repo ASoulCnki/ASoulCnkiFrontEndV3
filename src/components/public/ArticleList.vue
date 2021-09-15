@@ -40,7 +40,7 @@ const isMarked = ref(false)
 <style scoped>
 .is-marked {
   @apply rounded-md bg-gray-50 shadow-md mb-4 w-full p-2 text-gray-600;
-  @apply dark:(text-gray-400 bg-gray-700);
+  @apply dark:(text-gray-400 bg-gray-700) ;
 }
 
 .button {

@@ -1,15 +1,15 @@
 <template>
-  <div class="filter-content pb-2">
-    <div class="overflow-hidden pt-1">
+  <div class="pb-2 filter-content">
+    <div class="pt-1 overflow-hidden">
       <div
         @click="visible = !visible"
-        class="inline-block float-right border rounded-sm px-1 mt-1 border-gray-400"
+        class="border rounded-sm border-gray-400 mt-1 px-1 inline-block float-right"
       >
         <span class="iconfont icon-filter">筛选</span>
       </div>
     </div>
     <div
-      class="block bg-gray-100 rounded-sm p-1 space-y-2 mt-2 py-2 overflow-hidden dark:bg-gray-800"
+      class="rounded-sm space-y-2 bg-gray-100 mt-2 p-1 py-2 block overflow-hidden dark:bg-gray-800"
       v-if="visible"
     >
       <div v-for="(filter, index) in rankFilterArray" :key="filter.paramsName">
@@ -48,14 +48,14 @@
               placeholder="最多三个长度不超过10的关键词"
             />
             <span
-              class="iconfont icon-clean pl-1 w-3"
+              class="pl-1 w-3 iconfont icon-clean"
               @click="data[index] = ''"
             />
           </div>
         </div>
       </div>
       <div
-        class="button-panel pt-3 flex justify-center space-x-5 md:space-x-10 text-white"
+        class="flex space-x-5 text-white pt-3 button-panel justify-center md:space-x-10"
       >
         <span class="submit" @click="reset">重置</span>
         <span class="submit" @click="submit">确认</span>
@@ -151,35 +151,35 @@ const rankFilterArray: Array<RankFilter> = [
 
 <style scoped>
 .filter-content {
-  @apply bg-white shadow-md rounded-md px-2 mb-4 dark:(bg-gray-700 text-gray-400);
+  @apply bg-white rounded-md shadow-md mb-4 px-2 dark:(bg-gray-700 text-gray-400) ;
 }
 
 .filter-tags {
-  @apply w-[calc(100%-60px)] flex overflow-hidden inline-block space-y-2 -mt-1;
+  @apply flex space-y-2 -mt-1 w-[calc(100%-60px)] overflow-hidden inline-block;
 }
 
 .filter-tag {
-  @apply border inline-block border-gray-400 text-gray-600 w-auto rounded-sm mr-1 px-1;
+  @apply border rounded-sm border-gray-400 mr-1 w-auto px-1 text-gray-600 inline-block;
 }
 
 .filter-input-area {
-  @apply outline-none rounded-md p-1 mx-2 box-border bg-white dark:(bg-gray-700 text-gray-300);
+  @apply bg-white rounded-md outline-none mx-2 p-1 box-border dark:(bg-gray-700 text-gray-300) ;
 }
 
 .filter-input {
-  @apply outline-none font-light px-1 w-[calc(100%-1.75rem)] bg-transparent;
+  @apply bg-transparent font-light outline-none px-1 w-[calc(100%-1.75rem)];
 }
 
 .label {
-  @apply inline-block px-2 border border-blue-400 bg-gray-100 mx-2 my-1 rounded-sm text-blue-400;
-  @apply dark:(text-gray-300 bg-gray-600 border-gray-600);
+  @apply border rounded-sm bg-gray-100 border-blue-400 my-1 mx-2 px-2 text-blue-400 inline-block;
+  @apply dark:(text-gray-300 bg-gray-600 border-gray-600) ;
 }
 
 .checkbox:checked ~ .label {
-  @apply bg-blue-400 text-white dark:(text-gray-200 bg-gray-500);
+  @apply bg-blue-400 text-white dark:(text-gray-200 bg-gray-500) ;
 }
 
 .submit {
-  @apply px-5 py-1 -mt-2 mb-1 rounded-md bg-blue-400 dark:(bg-gray-600 text-gray-300);
+  @apply rounded-md bg-blue-400 -mt-2 mb-1 py-1 px-5 dark:(bg-gray-600 text-gray-300) ;
 }
 </style>

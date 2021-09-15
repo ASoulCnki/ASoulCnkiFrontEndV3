@@ -8,12 +8,12 @@
 */
 
 .fixed-element {
-  @apply mr-3 my-2;
+  @apply my-2 mr-3;
 }
 
 .nofix-button {
-  @apply text-white bg-gray-600 rounded-xl shadow-xl cursor-pointer;
-  @apply hover:(shadow-inner bg-gray-500) p-3 py-2 opacity-60;
+  @apply rounded-xl cursor-pointer bg-gray-600 shadow-xl text-white;
+  @apply opacity-60 p-3 py-2 hover:(shadow-inner bg-gray-500) ;
 }
 
 /* 适用于只有一个 svg 的悬浮按钮 */
@@ -23,7 +23,7 @@
 
 /* 制造一块悬浮区域 */
 .fixed-area {
-  @apply fixed right-7 md:right-10;
+  @apply right-7 fixed md:right-10;
 }
 
 /* 返回顶部按钮 */

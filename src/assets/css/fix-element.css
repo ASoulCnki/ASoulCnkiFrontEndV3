@@ -13,7 +13,7 @@
 .el-dialog__header,
 .el-dialog__body,
 .el-dialog__title {
-  @apply dark:(bg-gray-800 text-gray-400);
+  @apply dark:(bg-gray-800 text-gray-400) ;
 }
 
 .el-dialog__body {

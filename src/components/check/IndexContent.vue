@@ -198,7 +198,7 @@ const copy = () => {
 }
 
 .active {
-  @apply cursor-pointer dark:(hover:text-yellow-500 text-gray-400) hover:text-blue-500;
+  @apply cursor-pointer dark:(hover:text-yellow-500 text-gray-400) hover:text-blue-500 ;
 }
 
 .active:disabled {

@@ -17,13 +17,13 @@ const toTop = () => scrollTo(0, 0)
 @import url("@/assets/css/unit-fixed.css");
 
 body {
-  @apply bg-gray-100 h-full;
+  @apply h-full bg-gray-100;
   @apply dark:bg-gray-900 dark:text-gray-400;
 }
 
 .main {
   min-width: 350px;
 
-  @apply min-h-full w-full sm:w-5/6 -xl:w-full xl:w-4/5 mx-auto opacity-100 mb-16;
+  @apply mx-auto min-h-full mb-16 w-full opacity-100 sm:w-5/6 xl:w-4/5 -xl:w-full;
 }
 </style>

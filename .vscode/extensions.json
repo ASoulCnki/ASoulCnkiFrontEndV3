@@ -1,0 +1,11 @@
+{
+  "recommendations": [
+    "dbaeumer.vscode-eslint",
+    "christian-kohler.npm-intellisense",
+    "esbenp.prettier-vscode",
+    "stylelint.vscode-stylelint",
+    "vscode-icons-team.vscode-icons",
+    "voorjaar.windicss-intellisense",
+    "johnsoncodehk.volar"
+  ]
+}

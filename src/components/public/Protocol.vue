@@ -1,6 +1,6 @@
 <template>
   <div class="protocol-content">
-    <p class="whitespace-pre-line leading-loose">
+    <p class="leading-loose whitespace-pre-line">
       欢迎您使用枝网查重平台服务（以下简称“本服务”）！《枝网查重平台用户协议》（以下简称“本协议”）为您（以下称“用户”）与开发者就使用本服务所达成的协议。
       使用本服务即表示您已审慎阅读、充分理解并同意遵守本协议下全部条款，特别是免除或者限制责任的条款。
     </p>
@@ -59,9 +59,9 @@
       <li>应该不会有人看完用户协议吧，全看完的话mua你一下</li>
     </ol>
 
-    <div class="text-center my-8">
-      <p class="my-2 font-bold">开源协议</p>
-      <span class="iconfont icon-balance text-3xl" />
+    <div class="my-8 text-center">
+      <p class="font-bold my-2">开源协议</p>
+      <span class="text-3xl iconfont icon-balance" />
       <p>Apache License 2.0</p>
     </div>
   </div>
@@ -73,19 +73,19 @@ ol {
 }
 
 .protocol-content {
-  @apply h-[24rem] box-border w-full px-4 leading-relaxed break-normal overflow-y-scroll;
+  @apply h-[24rem] leading-relaxed w-full px-4 box-border break-normal overflow-y-scroll;
 }
 
 .protocol-content ol {
-  @apply break-all pl-4;
+  @apply pl-4 break-all;
 }
 
 .protocol-content li {
-  @apply break-all py-1;
+  @apply py-1 break-all;
 }
 
 h3 {
-  @apply font-bold text-sm my-3;
+  @apply font-bold my-3 text-sm;
 }
 
 a {

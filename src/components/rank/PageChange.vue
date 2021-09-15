@@ -1,6 +1,6 @@
 <template>
   <div class="page-sm fixed-area">
-    <div class="fixed-button bottom-64" @click="sub">
+    <div class="bottom-64 fixed-button" @click="sub">
       <div class="iconfont icon-top icon-left" />
     </div>
     <div class="fixed-element">
@@ -8,7 +8,7 @@
         <input type="text" class="page-input" v-model.number.lazy="currPage" />
       </label>
     </div>
-    <div class="fixed-button bottom-40" @click="add">
+    <div class="bottom-40 fixed-button" @click="add">
       <div class="iconfont icon-top icon-right" />
     </div>
   </div>
@@ -59,18 +59,18 @@ watch(currPage, (newVal, oldVal) => {
 
 /* moblie fixed page changer */
 .page-sm {
-  @apply bottom-24 space-y-3 pb-2;
+  @apply space-y-3 pb-2 bottom-24;
 }
 
 /* wide screen use page changer at bottom
-.page-lg { @apply box-border hidden lg:flex justify-center space-x-5 mt-4; } */
+.page-lg { @apply space-x-5 mt-4 box-border hidden justify-center lg:flex; } */
 
 /* [废案]另一种宽屏悬浮的页面切换,存在样式问题
-.page-lg { @apply box-border w-4/5 bottom-16 absolute flex space-x-5 justify-center;} */
+.page-lg { @apply flex space-x-5 bottom-16 w-4/5 box-border absolute justify-center;} */
 
 .page-input {
-  @apply outline-none w-10 h-10 p-2 text-sm text-center text-gray-600 opacity-75;
-  @apply box-border overflow-hidden rounded-xl font-mono focus:opacity-100;
-  @apply dark:(bg-gray-500 text-gray-300);
+  @apply outline-none h-10 text-sm text-center opacity-75 p-2 text-gray-600 w-10;
+  @apply rounded-xl font-mono box-border overflow-hidden focus:opacity-100;
+  @apply dark:(bg-gray-500 text-gray-300) ;
 }
 </style>

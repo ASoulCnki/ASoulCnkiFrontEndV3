@@ -18,23 +18,23 @@ onKeyUp('Enter', search)
 </script>
 
 <template>
-  <div class="text-4xl text-center mt-56 p-10 tracking-widest space-x-1">
+  <div class="space-x-1 mt-56 text-center tracking-widest p-10 text-4xl">
     <span class="text-blue-500">枝</span>
     <span class="text-red-500">网</span>
     <span class="text-green-500">搜</span>
     <span class="text-yellow-500">索</span>
   </div>
-  <div class="flex justify-between rounded-2xl bg-white mx-5 px-2 shadow-sm">
+  <div class="bg-white flex rounded-2xl shadow-sm mx-5 px-2 justify-between">
     <label class="w-[calc(100%-6.25rem)]">
       <input
         type="text"
         v-model="inputText"
-        class="w-full h-12 text-xl outline-none rounded-2xl pl-3 tracking-widest"
+        class="outline-none rounded-2xl h-12 text-xl tracking-widest w-full pl-3"
       />
     </label>
-    <div class="mt-2 divide-x-2">
+    <div class="divide-x-2 mt-2">
       <span
-        class="iconfont icon-clean text-xl text-eileen mr-2"
+        class="text-xl text-eileen mr-2 iconfont icon-clean"
         v-if="isTextNotNull"
         @click="inputText = ''"
       ></span>

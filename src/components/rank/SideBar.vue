@@ -3,7 +3,7 @@
     <div class="discription">
       <h2 class="text-xl py-2">枝江作文展</h2>
       <h2 class="text-lg high">
-        <span class="iconfont icon-time -ml-1 mr-1"></span>
+        <span class="mr-1 -ml-1 iconfont icon-time"></span>
         上次更新时间: {{ endTime }}
       </h2>
       <p class="text">
@@ -72,7 +72,7 @@
       <p class="text">受制于算法精度和评论数据的数量，以上问题我们目前无法解决，请期待后续技术攻关。</p>
     </div>
     <div class="discription">
-      <a href="/" class="url font-semibold tracking-wider">返回枝网查重</a>
+      <a href="/" class="font-semibold tracking-wider url">返回枝网查重</a>
     </div>
     <Links />
   </div>
@@ -87,7 +87,7 @@ defineProps({
 
 <style scoped>
 .right-content {
-  @apply box-border lg:float-left text-lg;
+  @apply text-lg box-border lg:float-left;
 }
 
 .url {
@@ -95,17 +95,17 @@ defineProps({
 }
 
 .discription {
-  @apply box-border w-full px-3 py-2 mb-5 rounded-md shadow-md;
+  @apply rounded-md shadow-md mb-5 w-full py-2 px-3 box-border;
   @apply bg-gray-50 text-gray-700;
-  @apply dark:(text-gray-400 bg-gray-700);
+  @apply dark:(text-gray-400 bg-gray-700) ;
 }
 
 .text {
-  @apply leading-relaxed text-sm my-1;
+  @apply my-1 text-sm leading-relaxed;
 }
 
 .list {
-  @apply text-sm leading-relaxed font-semibold;
+  @apply font-semibold text-sm leading-relaxed;
 }
 
 .high {
@@ -117,16 +117,16 @@ defineProps({
 }
 
 .right-footer {
-  @apply flex w-full text-gray-400 divide-x text-sm mb-8;
+  @apply divide-x flex text-sm mb-8 w-full text-gray-400;
 }
 
 .footer-links {
-  @apply grid grid-cols-1 box-border w-1/3 text-center;
+  @apply text-center grid w-1/3 grid-cols-1 box-border;
 }
 
 .footer-links a,
 .footer-links p {
-  @apply py-2 grid;
+  @apply grid py-2;
 }
 
 .footer-links a {
@@ -134,6 +134,6 @@ defineProps({
 }
 
 .footer-links p {
-  @apply text-gray-600 font-semibold dark:text-gray-300;
+  @apply font-semibold text-gray-600 dark:text-gray-300;
 }
 </style>

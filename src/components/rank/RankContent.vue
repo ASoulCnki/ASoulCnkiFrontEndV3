@@ -2,7 +2,7 @@
   <div class="w-full">
     <Select :total="total" />
     <div class="empty" v-if="articleArray.length == 0" v-cloak>
-      <span class="iconfont icon-null text-[3rem] block pb-3"></span>
+      <span class="pb-3 text-[3rem] iconfont icon-null block"></span>
       搜索结果为空，请尝试重新搜索或更换搜索条件
     </div>
     <Article v-for="s in articleArray" :key="s.id" :article="s" v-cloak />
@@ -41,8 +41,8 @@ watch(page, () => {
 
 <style>
 .empty {
-  @apply text-center py-20 px-5 bg-gray-200 my-4 rounded-md tracking-wider break-all;
-  @apply text-gray-400 font-semibold leading-loose;
-  @apply dark:(bg-gray-700 text-gray-500);
+  @apply rounded-md bg-gray-200 my-4 text-center tracking-wider py-20 px-5 break-all;
+  @apply font-semibold leading-loose text-gray-400;
+  @apply dark:(bg-gray-700 text-gray-500) ;
 }
 </style>
