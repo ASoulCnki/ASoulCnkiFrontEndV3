@@ -1,4 +1,3 @@
-
 interface usePlatformResult {
   isWin: boolean
   isLinux: boolean

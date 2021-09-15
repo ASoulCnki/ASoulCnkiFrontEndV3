@@ -1,10 +1,10 @@
-import axios, { AxiosPromise, AxiosRequestConfig } from "axios";
-import { serverInfo } from "./types";
+import axios, { AxiosPromise, AxiosRequestConfig } from 'axios'
+import { serverInfo } from './types'
 
 // set axios defalut config
 axios.defaults.timeout = 4000 // mill seconds
 
-axios.interceptors.request.use(conf => {
+axios.interceptors.request.use((conf) => {
   // When use get, replace encodeURI with encodeURIComponent
   if (conf.method == 'get' && conf.url && conf.data) {
     let paramsCache: string[] = []
@@ -22,21 +22,20 @@ axios.interceptors.request.use(conf => {
 })
 
 axios.interceptors.response.use(
-  response => response,
+  (response) => response,
   () => Promise.resolve({ data: { code: -1 } }) // When request error, Ignore it
 )
 
-
 // param 'data' can be used for GET 'params'
 function subRequest(conf: AxiosRequestConfig): AxiosPromise {
-  return axios(conf).catch(err => err)
+  return axios(conf).catch((err) => err)
 }
 
 // 默认合并数据函数
 // return response[0] or {}
 // 每个接口需要单独编写对应和合并数据函数
 function mergeResponse(responses: any[]) {
-  return (responses.length > 1) ? responses[0] : {}
+  return responses.length > 1 ? responses[0] : {}
 }
 
 // create async allRequest function
@@ -49,17 +48,20 @@ export function allRequestFactory(mergeFn?: Function) {
     let response: any
     // from servers get axios peomise array
 
-    servers.map(server => {
+    servers.map((server) => {
       conf.url = server.url
       axiosPendingArray.push(subRequest(conf))
     })
-  
-    await axios.all(axiosPendingArray)
-      .then(axios.spread(
-        (...args: any[]) => { response = mergeFunction(args) }
-      ))
-      .catch(err => err)
-  
+
+    await axios
+      .all(axiosPendingArray)
+      .then(
+        axios.spread((...args: any[]) => {
+          response = mergeFunction(args)
+        })
+      )
+      .catch((err) => err)
+
     return response
   }
 }

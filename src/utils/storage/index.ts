@@ -6,7 +6,7 @@ const NOT_ACTIVE_KEY = 'active'
 
 /**
  * get History storage
- * @returns {Array} 
+ * @returns {Array}
  */
 function getHistory() {
   const array = JSON.parse(localStorage.getItem(HISTORY_KEY) || '[]')
@@ -17,13 +17,13 @@ function getHistory() {
 /**
  * append new Val to History Array
  * Uesd by check
- * @param {Object} appendVal 
+ * @param {Object} appendVal
  */
 function addHistory(appendVal: any) {
   let array = getHistory()
   array.push(appendVal)
 
-  array = [... new Set(array)]
+  array = [...new Set(array)]
   localStorage.setItem(HISTORY_KEY, JSON.stringify(array))
 }
 
@@ -38,25 +38,24 @@ function clearHistoty() {
 const history = {
   get: getHistory,
   add: addHistory,
-  clear: clearHistoty
+  clear: clearHistoty,
 }
-
 
 function getAgree() {
   const agree = localStorage.getItem(AGREE_KEY)
   if (!agree) {
     setAgree()
   }
-  return !! agree
+  return !!agree
 }
 
-function setAgree(newVal=false) {
+function setAgree(newVal = false) {
   localStorage.setItem(AGREE_KEY, JSON.stringify(newVal))
 }
 
 const agree = {
   get: getAgree,
-  set: setAgree
+  set: setAgree,
 }
 
 function getActive() {
@@ -68,17 +67,17 @@ function getActive() {
   return !active
 }
 
-function setActive(newVal=true) {
+function setActive(newVal = true) {
   localStorage.setItem(NOT_ACTIVE_KEY, JSON.stringify(newVal))
 }
 
 const active = {
   get: getActive,
-  set: setActive
+  set: setActive,
 }
 
 export default {
   history,
   agree,
-  active
+  active,
 }

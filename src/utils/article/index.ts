@@ -1,7 +1,4 @@
-import { diffText } from "./diff";
-import { textToLink } from "./link";
+import { diffText } from './diff'
+import { textToLink } from './link'
 
-export {
-  diffText,
-  textToLink
-}
+export { diffText, textToLink }

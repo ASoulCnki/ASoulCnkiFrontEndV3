@@ -19,23 +19,21 @@ export default defineConfig({
           esModule: true,
           ensureStyleFile: true,
           resolveStyle: (name) => {
-            return `element-plus/lib/theme-chalk/${name}.css`;
+            return `element-plus/lib/theme-chalk/${name}.css`
           },
           resolveComponent: (name) => {
-            return `element-plus/lib/${name}`;
+            return `element-plus/lib/${name}`
           },
-        }
-      ]
-    })
+        },
+      ],
+    }),
   ],
   server: {
     fs: {
-      allow: ['..']
-    }
+      allow: ['..'],
+    },
   },
   resolve: {
-    alias: [
-      { find: '@', replacement: '/src' }
-    ]
-  }
+    alias: [{ find: '@', replacement: '/src' }],
+  },
 })

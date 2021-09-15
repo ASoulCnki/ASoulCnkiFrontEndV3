@@ -1,10 +1,14 @@
 <template>
   <div class="notify bg-blue-400">
-    <div class="notify-left"><span class="iconfont icon-message"/></div>
+    <div class="notify-left">
+      <span class="iconfont icon-message" />
+    </div>
     <div class="notify-right" ref="boxRef">
       <div class="notify-text" ref="textRef">
         <span v-for="(notice, index) in content" :key="index">
-          <a v-if="notice.url" :href="notice.url" ><span>{{ notice.message }}</span></a>
+          <a v-if="notice.url" :href="notice.url">
+            <span>{{ notice.message }}</span>
+          </a>
           <span v-else>{{ notice.message }}</span>
         </span>
       </div>
@@ -24,7 +28,7 @@ const isScrolling = ref(false)
 const animate = ref(null)
 
 // Mounted on Dom
-const [ boxRef, textRef ] = [ ref(null), ref(null) ]
+const [boxRef, textRef] = [ref(null), ref(null)]
 
 onMounted(() => {
   window.onresize = () => {
@@ -38,8 +42,8 @@ onMounted(() => {
 
 const start = () => {
   // get element and offsetwidth
-  const [ box, text ] = [ boxRef.value, textRef.value ]
-  let [textWidth, boxWidth] = [ text.offsetWidth, box.offsetWidth ]
+  const [box, text] = [boxRef.value, textRef.value]
+  let [textWidth, boxWidth] = [text.offsetWidth, box.offsetWidth]
 
   // apply animate
   const toScrollLeft = () => {
@@ -69,28 +73,37 @@ const start = () => {
 </script>
 
 <style scoped>
-  .notify {
-    @apply w-full h-9 pl-2 text-white text-lg leading-loose;
-    @apply rounded-md overflow-hidden bg-carol;
-  }
+.notify {
+  @apply w-full h-9 pl-2 text-white text-lg leading-loose;
+  @apply rounded-md overflow-hidden bg-carol;
+}
 
-  .notify-left, .notify-right { @apply float-left box-border leading-loose; }
+.notify-left,
+.notify-right {
+  @apply float-left box-border leading-loose;
+}
 
-  .notify-left { @apply w-8; }
+.notify-left {
+  @apply w-8;
+}
 
-  .notify-right {
-    @apply w-[calc(100%-2.25rem)] tracking-widest overflow-hidden whitespace-nowrap font-medium;
-  }
-  
-  .notify-text { @apply inline; }
+.notify-right {
+  @apply w-[calc(100%-2.25rem)] tracking-widest overflow-hidden whitespace-nowrap font-medium;
+}
 
-  .notify-text-padding {
-    @apply w-full px-[100%];
-  }
+.notify-text {
+  @apply inline;
+}
 
-  .notify-text-padding span {
-    @apply text-left m-auto;
-  }
+.notify-text-padding {
+  @apply w-full px-[100%];
+}
 
-  .iconfont { @apply text-2xl; }
+.notify-text-padding span {
+  @apply text-left m-auto;
+}
+
+.iconfont {
+  @apply text-2xl;
+}
 </style>

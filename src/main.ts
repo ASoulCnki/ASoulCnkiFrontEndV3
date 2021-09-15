@@ -8,8 +8,4 @@ import '@/assets/css/fix-element.css'
 import '@/assets/css/iconfont.css'
 import '@/assets/css/unit-fixed.css'
 
-createApp(App)
-  .use(Element)
-  .use(router)
-  .use(store)
-  .mount('#app')
+createApp(App).use(Element).use(router).use(store).mount('#app')

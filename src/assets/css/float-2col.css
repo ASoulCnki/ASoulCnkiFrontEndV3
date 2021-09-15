@@ -1,6 +1,6 @@
 /*
   Get A Float 2 Col Div
-  Usage: 
+  Usage:
   <div class="main-content">
     <div class="left"></div>
     <div class="right"></div>
@@ -12,6 +12,10 @@
   @apply mx-auto px-3 space-y-4 lg:(space-y-0 pt-8);
 }
 
-.left { @apply pt-4 lg:(pt-0 w-3/5 mb-20 float-left); }
+.left {
+  @apply pt-4 lg:(pt-0 w-3/5 mb-20 float-left);
+}
 
-.right { @apply lg:(w-2/5 float-left pl-4) mb-8; }
+.right {
+  @apply lg:(w-2/5 float-left pl-4) mb-8;
+}

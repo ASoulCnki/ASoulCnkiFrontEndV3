@@ -1,4 +1,4 @@
-/* 
+/*
   fix some style about element-plus components
   import it after element-plus css
 */
@@ -10,10 +10,16 @@
   @apply rounded-lg;
 }
 
-.el-dialog__header, .el-dialog__body, .el-dialog__title {
+.el-dialog__header,
+.el-dialog__body,
+.el-dialog__title {
   @apply dark:(bg-gray-800 text-gray-400);
 }
 
-.el-dialog__body { @apply p-0 pb-2; }
+.el-dialog__body {
+  @apply p-0 pb-2;
+}
 
-.el-overlay { @apply m-0; }
+.el-overlay {
+  @apply m-0;
+}

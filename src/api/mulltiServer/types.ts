@@ -1,7 +1,7 @@
-type Addr = `${ 'http' | 'https' }://${string}` | `/${string}`
+type Addr = `${'http' | 'https'}://${string}` | `/${string}`
 
 export interface serverInfo {
-  name: string,
-  url: Addr,
+  name: string
+  url: Addr
   include?: string[]
 }

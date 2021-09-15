@@ -1,4 +1,3 @@
-
 export const useUA = () => {
   if (!window) {
     throw new Error('not in the browser')

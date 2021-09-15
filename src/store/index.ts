@@ -1,7 +1,7 @@
 import { createStore, useStore } from 'vuex'
 
 const store = createStore({
-  mutations:{
+  mutations: {
     setPage(state, val) {
       state.page = val
     },
@@ -10,7 +10,7 @@ const store = createStore({
     },
     setParams(state, params) {
       state.params = params
-    }
+    },
   },
   state: {
     page: 1,
@@ -18,8 +18,8 @@ const store = createStore({
       sortMode: 0,
       timeRangeMode: 0,
       pageSize: 10,
-    }
-  }
+    },
+  },
 })
 
 export default store

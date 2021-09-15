@@ -5,26 +5,26 @@ import { allCheck } from './multi'
 
 interface CheckResponse {
   articleArray: Array<Article>
-  startTime: string,
-  lastUpdate: string,
+  startTime: string
+  lastUpdate: string
   rate: string
 }
 
 /**
- * Use Remote check API 
+ * Use Remote check API
  * @param {String} text need checked text (10 < text.length < 1000)
  * @returns response startTime, lastUpdete, rate, articleArray
  */
 export async function check(text: string) {
-
   let response = {}
-  const data = {text: text}
-  await instance.post('check', data)
-    .then( res => {
+  const data = { text: text }
+  await instance
+    .post('check', data)
+    .then((res) => {
       const data = res.data.data
       response = convertCheck(data)
     })
-    .catch( err => {
+    .catch((err) => {
       message('请求异常，请稍后重试', 'error')
       throw new Error(err)
     })
@@ -32,13 +32,12 @@ export async function check(text: string) {
   return response
 }
 
-
 export function convertCheck(data: any) {
   let response: CheckResponse = {
     startTime: '',
     lastUpdate: '',
     articleArray: [],
-    rate: '0.00'
+    rate: '0.00',
   }
 
   response.startTime = parseTime(data.start_time)

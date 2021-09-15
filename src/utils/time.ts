@@ -2,23 +2,25 @@
  * Created by cisincere on 16/11/18.
  */
 
+type Time = number | string | Date
+
 /**
  * Parse the time to string
  * @param {(Object|string|number)} time
  * @param {string} cFormat
  * @returns {string | null}
  */
- export function parseTime(time: any, cFormat: string ='{y}-{m}-{d} {h}:{i}:{s}') {
+export function parseTime(time: Time, cFormat: string = '{y}-{m}-{d} {h}:{i}:{s}') {
   if (arguments.length === 0 || !time) {
-    return ""
+    return ''
   }
   const format = cFormat || '{y}-{m}-{d} {h}:{i}:{s}'
   let date
   if (typeof time === 'object') {
     date = time
   } else {
-    if ((typeof time === 'string')) {
-      if ((/^[0-9]+$/.test(time))) {
+    if (typeof time === 'string') {
+      if (/^[0-9]+$/.test(time)) {
         // support "1548221490638"
         time = parseInt(time)
       } else {
@@ -27,7 +29,7 @@
       }
     }
 
-    if ((typeof time === 'number') && (time.toString().length === 10)) {
+    if (typeof time === 'number' && time.toString().length === 10) {
       time = time * 1000
     }
     date = new Date(time)
@@ -39,12 +41,14 @@
     h: date.getHours(),
     i: date.getMinutes(),
     s: date.getSeconds(),
-    a: date.getDay()
+    a: date.getDay(),
   }
-  const time_str = format.replace(/{([ymdhisa])+}/g, (result:any, key: string) => {
+  const time_str = format.replace(/{([ymdhisa])+}/g, (result: any, key: string) => {
     const value = formatObj[key]
     // Note: getDay() returns 0 on Sunday
-    if (key === 'a') { return ['日', '一', '二', '三', '四', '五', '六'][value ] }
+    if (key === 'a') {
+      return ['日', '一', '二', '三', '四', '五', '六'][value]
+    }
     return value.toString().padStart(2, '0')
   })
   return time_str
@@ -64,7 +68,7 @@ export function formatTime(time: any, option: string) {
   const d = new Date(time)
   const now = Date.now()
 
-  const diff = ( Date.parse(now.toString()) - Date.parse(d.toString()) ) / 1000
+  const diff = (Date.parse(now.toString()) - Date.parse(d.toString())) / 1000
 
   if (diff < 30) {
     return '刚刚'
@@ -79,16 +83,6 @@ export function formatTime(time: any, option: string) {
   if (option) {
     return parseTime(time, option)
   } else {
-    return (
-      d.getMonth() +
-      1 +
-      '月' +
-      d.getDate() +
-      '日' +
-      d.getHours() +
-      '时' +
-      d.getMinutes() +
-      '分'
-    )
+    return d.getMonth() + 1 + '月' + d.getDate() + '日' + d.getHours() + '时' + d.getMinutes() + '分'
   }
 }

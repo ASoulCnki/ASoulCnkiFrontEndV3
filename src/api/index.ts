@@ -38,6 +38,14 @@ instance.interceptors.request.use(conf => {
   return conf
 })
 
+// instance.interceptors.request.use(
+//   (conf) => {
+//     const historyAPI = '' 
+//     if (!conf.url || !conf.url.includes(historyAPI)) return conf
+//     if (localStorage.getItem('localStorage'))
+//     return conf
+//   })
+
 instance.interceptors.response.use(
   (response) : any => {
     // only response.data.code == 0 success
