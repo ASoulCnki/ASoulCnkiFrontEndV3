@@ -3,7 +3,7 @@ import { parseTime } from './time'
 import { ElMessage } from 'element-plus'
 import { convert } from './check/index'
 import storage from './storage'
-import { copyContent, isChracterDraw } from './check'
+import { copyContent, isCharacterDraw } from './check'
 
 export function message(message: string, type: 'info' | 'success' | 'warning' | 'error' = 'success') {
   ElMessage({ message, type, showClose: true })
@@ -68,7 +68,7 @@ function handleRelated(s: reply): Article {
  * get comment link from oid, rpid, type
  * @param {Number|String} oid
  * @param {Number|String} rpid
- * @param {Number} type comment type aviliable: 1, 11, 17, 12
+ * @param {Number} type comment type available: 1, 11, 17, 12
  * @returns {String} a bili comment link
  */
 function parseURL(oid: string, dynamic_id: string, rpid: string, type: number) {
@@ -85,4 +85,4 @@ function parseURL(oid: string, dynamic_id: string, rpid: string, type: number) {
   return `https://${baseURL}/#reply${rpid}`
 }
 
-export { diffText, textToLink, parseTime, parseURL, convert, handleRelated, copyContent, isChracterDraw, storage }
+export { diffText, textToLink, parseTime, parseURL, convert, handleRelated, copyContent, isCharacterDraw, storage }

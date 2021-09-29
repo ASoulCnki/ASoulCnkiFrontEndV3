@@ -12,7 +12,6 @@
       <div class="iconfont icon-top icon-right" />
     </div>
   </div>
-  <slot></slot>
 </template>
 
 <script setup>

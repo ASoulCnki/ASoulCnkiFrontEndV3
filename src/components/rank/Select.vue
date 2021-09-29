@@ -1,19 +1,29 @@
 <template>
-  <div class="pb-2 filter-content">
-    <div class="pt-1 overflow-hidden">
+  <div class="filter-content">
+    <div class="grid pt-2 grid-cols-[auto,30px]">
+      <div class="filter overflow-y-hidden">
+        <span
+          v-for="tag in tagTextArray"
+          :key="tag"
+          class="border rounded-md mr-2 mb-2 px-2 inline-block dark:(border-gray-400)"
+        >{{ tag }}</span>
+      </div>
       <div
         @click="visible = !visible"
-        class="border rounded-sm border-gray-400 mt-1 px-1 inline-block float-right"
+        class="border rounded-md border-gray-500 h-7 text-center"
       >
-        <span class="iconfont icon-filter">筛选</span>
+        <span class="iconfont icon-filter"></span>
       </div>
     </div>
     <div
-      class="rounded-sm space-y-2 bg-gray-100 mt-2 p-1 py-2 block overflow-hidden dark:bg-gray-800"
+      class="rounded-sm space-y-2 p-1 py-2 block overflow-hidden dark:bg-gray-700"
       v-if="visible"
     >
       <div v-for="(filter, index) in rankFilterArray" :key="filter.paramsName">
-        <p class="p-2 pt-0">{{ filter.name }}</p>
+        <p
+          class="text-sm px-2 text-gray-500 dark:(text-gray-400)"
+        >{{ filter.name }}</p>
+        <hr class="my-1 w-full dark:(bg-gray-600)" />
         <div
           v-if="['multi', 'single'].includes(filter.type)"
           class="inline-block"
@@ -26,14 +36,14 @@
               v-if="filter.type == 'single'"
               type="radio"
               class="hidden checkbox"
-              :value="option.value"
+              :value="option"
               v-model="data[index]"
             />
             <input
               v-else
               type="checkbox"
               class="hidden checkbox"
-              :value="option.value"
+              :value="option"
               v-model="data[index]"
             />
             <div class="label">{{ option.text }}</div>
@@ -62,29 +72,28 @@
       </div>
     </div>
   </div>
-  <PageChange :total="total" />
 </template>
 
 <script lang="ts" setup>
-import { ref, onMounted } from 'vue'
-import { arrayToParams, RankFilter } from '../../utils/rank/select'
+import { ref, onMounted, computed } from 'vue'
+import { arrayToParams } from '../../utils/rank/select'
+import { rankFilterArray } from '.'
 import { useStore } from 'vuex'
-import PageChange from './PageChange.vue'
 
-onMounted(() => {
-  reset()
-})
+onMounted(() => { reset() })
 
-defineProps({
-  total: Number
-})
-
+const data = ref<Array<any>>([])
+const visible = ref(false)
 const store = useStore()
 
+
 const submit = () => {
-  const res = arrayToParams(data.value, rankFilterArray)
+  let emitData = data.value.map(s => {
+    return (Array.isArray(s)) ? s.map(x => x.value) :
+      (s.value == undefined) ? s || '' : s.value
+  })
+  const res = arrayToParams(emitData, rankFilterArray)
   store.commit('setParams', res)
-  store.commit('setPage', 1)
   visible.value = false
 }
 
@@ -93,77 +102,27 @@ const reset = () => {
     switch (s.type) {
       case 'text': return ''
       case 'multi': return []
-    }
-    if (s.type == 'single') {
-      if (s.options) {
-        return s.options[0].value
-      }
+      case 'single': return s.options![0]
     }
   })
   data.value = tempArray
 }
 
-const data = ref<Array<any>>([])
-const visible = ref(false)
-
-const rankFilterArray: Array<RankFilter> = [
-  {
-    paramsName: 'timeRangeMode',
-    name: '时间跨度',
-    options: [
-      { text: '全部时间', value: 0 },
-      { text: '本周', value: 1 },
-      { text: '三天内', value: 2 },
-    ],
-    type: 'single'
-  },
-  {
-    paramsName: 'sortMode',
-    name: '筛选方式',
-    options: [
-      { text: '累计点赞数', value: 0 },
-      { text: '点赞数', value: 1 },
-      { text: '引用数', value: 2 },
-    ],
-    type: 'single'
-  },
-  {
-    paramsName: 'ids',
-    name: '评论区[多选]',
-    options: [
-      { text: '向晚', value: 672346917 },
-      { text: '贝拉', value: 672353429 },
-      { text: '珈乐', value: 351609538 },
-      { text: '嘉然', value: 672328094 },
-      { text: '乃琳', value: 672342685 },
-      { text: '官号', value: 703007996 },
-    ],
-    type: 'multi'
-  },
-  {
-    paramsName: 'keywords',
-    name: '关键词',
-    type: 'text'
-  }
-]
+const tagTextArray = computed(() => {
+  return data.value.flat()
+    .filter((s: string) => s != "")
+    .map(s => (s.text == undefined) ? s : s.text)
+})
 
 </script>
 
 <style scoped>
 .filter-content {
-  @apply bg-white rounded-md shadow-md mb-4 px-2 dark:(bg-gray-700 text-gray-400) ;
-}
-
-.filter-tags {
-  @apply flex space-y-2 -mt-1 w-[calc(100%-60px)] overflow-hidden inline-block;
-}
-
-.filter-tag {
-  @apply border rounded-sm border-gray-400 mr-1 w-auto px-1 text-gray-600 inline-block;
+  @apply bg-white rounded-md shadow-md mb-3 px-2 dark:(bg-gray-700 text-gray-400) ;
 }
 
 .filter-input-area {
-  @apply bg-white rounded-md outline-none mx-2 p-1 box-border dark:(bg-gray-700 text-gray-300) ;
+  @apply bg-white border rounded-md outline-none border-gray-400 mx-2 p-1 box-border dark:(bg-gray-700 text-gray-300) ;
 }
 
 .filter-input {
@@ -171,8 +130,8 @@ const rankFilterArray: Array<RankFilter> = [
 }
 
 .label {
-  @apply border rounded-sm bg-gray-100 border-blue-400 my-1 mx-2 px-2 text-blue-400 inline-block;
-  @apply dark:(text-gray-300 bg-gray-600 border-gray-600) ;
+  @apply border rounded-md border-blue-400 my-1 mx-2 px-2 text-blue-500 inline-block;
+  @apply dark:(text-gray-400 bg-gray-800 border-gray-700) ;
 }
 
 .checkbox:checked ~ .label {

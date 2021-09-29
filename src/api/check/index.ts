@@ -13,7 +13,7 @@ interface CheckResponse {
 /**
  * Use Remote check API
  * @param {String} text need checked text (10 < text.length < 1000)
- * @returns response startTime, lastUpdete, rate, articleArray
+ * @returns response startTime, lastUpdate, rate, articleArray
  */
 export async function check(text: string) {
   let response = {}

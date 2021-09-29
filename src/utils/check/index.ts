@@ -6,7 +6,7 @@ import { ref, Ref } from 'vue'
  * @param {Ref|String} s
  * @returns {boolean}
  */
-export function isChracterDraw(s: Ref | String) {
+export function isCharacterDraw(s: Ref | String) {
   const str = ref(s)
 
   //统计常规符号：汉字 字母 数字

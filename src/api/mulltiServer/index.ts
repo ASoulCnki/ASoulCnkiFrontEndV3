@@ -1,7 +1,7 @@
 import axios, { AxiosPromise, AxiosRequestConfig } from 'axios'
 import { serverInfo } from './types'
 
-// set axios defalut config
+// set axios default config
 axios.defaults.timeout = 4000 // mill seconds
 
 axios.interceptors.request.use((conf) => {
@@ -46,7 +46,7 @@ export function allRequestFactory(mergeFn?: Function) {
     const axiosPendingArray: AxiosPromise[] = []
     // returned response
     let response: any
-    // from servers get axios peomise array
+    // from servers get axios promise array
 
     servers.map((server) => {
       conf.url = server.url

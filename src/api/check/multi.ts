@@ -8,7 +8,9 @@ function handleCheck(responses: any[]) {
   let [start_time, end_time]: Array<Array<any>> = [[], []]
   let rate: any[] = []
 
-  responses = responses.map((s: any) => s.data).filter((s: any) => s.code != undefined && s.code == 0) // remove error response (code != 0)
+  responses = responses
+    .map((s: any) => s.data)
+    .filter((s: any) => s.code != undefined && s.code == 0) // remove error response (code != 0)
 
   responses.map((s: any) => {
     related = related.concat(s.data.related)
@@ -18,7 +20,9 @@ function handleCheck(responses: any[]) {
   })
 
   // related 去重 按时间排序
-  related = [...new Set(related.map((s) => JSON.stringify(s)))].map((s) => JSON.parse(s)).sort((a, b) => a.start_time - b.start_time)
+  related = [...new Set(related.map((s) => JSON.stringify(s)))]
+    .map((s) => JSON.parse(s))
+    .sort((a, b) => a.start_time - b.start_time)
 
   response = {
     rate: Math.max(...rate, 0),

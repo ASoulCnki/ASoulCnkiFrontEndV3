@@ -29,12 +29,12 @@ const merge = function (intervals: Array<cache>) {
  * 标记重复区间
  * @param {String} origin 待查重文本
  * @param {String} dest 返回的文本
- * @param {Number} sensive 敏感长度
+ * @param {Number} sensitive 敏感长度
  * @returns {Array<Object>} 重复区间数组（根据开始位置逆序）
  */
-function compare(origin: string, dest: string, sensive: number) {
+function compare(origin: string, dest: string, sensitive: number) {
   const length = origin.length * dest.length
-  let martix = Array(length).fill(0)
+  let matrix = Array(length).fill(0)
   let cacheArray: Array<cache> = []
   let [originArr, destArr] = [[...origin], [...dest]]
 
@@ -58,7 +58,7 @@ function compare(origin: string, dest: string, sensive: number) {
   }
 
   originArr.forEach((s, index) => {
-    if (dest[0] == s) martix[index] = 1
+    if (dest[0] == s) matrix[index] = 1
   })
 
   destArr.forEach((x, indexX) => {
@@ -68,17 +68,17 @@ function compare(origin: string, dest: string, sensive: number) {
 
       if (x == y) {
         if (indexY == 0) {
-          martix[index] = 1
+          matrix[index] = 1
           return
         }
 
-        martix[index] = martix[preIndex] + 1
+        matrix[index] = matrix[preIndex] + 1
 
-        if (martix[index] >= sensive) {
-          cacheArray.push(newCache(indexY, martix[index]))
+        if (matrix[index] >= sensitive) {
+          cacheArray.push(newCache(indexY, matrix[index]))
         }
-        if (martix[index] > sensive) {
-          cacheArray = remove(cacheArray, newCache(indexY - 1, martix[preIndex]))
+        if (matrix[index] > sensitive) {
+          cacheArray = remove(cacheArray, newCache(indexY - 1, matrix[preIndex]))
         }
       }
     })
@@ -110,11 +110,11 @@ const render = (s: string, flag: Array<cache>, tag: string) => {
  * 对文本重复对比，给重复部分加tag
  * @param {string} origin 待查重文本
  * @param {string} dest 服务器返回的文本
- * @param {number} sensive 敏感长度
+ * @param {number} sensitive 敏感长度
  * @param {string} tag HTML tag, example a, em
  * @returns {string} 做好标记的文本
  */
-export function diffText(origin: string, dest: string, sensive = 4, tag = 'em') {
-  const flag = compare(dest, origin, sensive)
+export function diffText(origin: string, dest: string, sensitive = 4, tag = 'em') {
+  const flag = compare(dest, origin, sensitive)
   return render(dest, flag, tag)
 }

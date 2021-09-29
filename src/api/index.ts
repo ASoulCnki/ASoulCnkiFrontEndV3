@@ -1,28 +1,28 @@
 /*
-* Use Remote API
-* Example:
-*   const data = await api.check(text)
-*   response.rate = data.rate
-*/
+ * Use Remote API
+ * Example:
+ *   const data = await api.check(text)
+ *   response.rate = data.rate
+ */
 
-import axios from "axios";
-import { message } from "../utils";
+import axios from 'axios'
+import { message } from '../utils'
 import { check, allCheck } from './check'
 import { ranking } from './rank'
 
 const instance = axios.create({
   // When prod, baseURL can replace to '/'
   baseURL: 'https://asoulcnki.asia/v1/api/',
-  timeout: 4000  //millsecond
+  timeout: 4000, //millisecond
 })
 
-instance.interceptors.request.use(conf => {
+instance.interceptors.request.use((conf) => {
   // Since some string cause exception
   // When use get, use encodeURIComponent
   if (conf.method == 'get' && conf.params && conf.url) {
     let cache = []
     for (const k in conf.params) {
-      cache.push(`${k}=${encodeURIComponent(conf.params[k])}`)
+      if (conf.params[k].toString() != '') cache.push(`${k}=${encodeURIComponent(conf.params[k])}`)
     }
     const params = cache.join('&')
 
@@ -40,14 +40,14 @@ instance.interceptors.request.use(conf => {
 
 // instance.interceptors.request.use(
 //   (conf) => {
-//     const historyAPI = '' 
+//     const historyAPI = ''
 //     if (!conf.url || !conf.url.includes(historyAPI)) return conf
 //     if (localStorage.getItem('localStorage'))
 //     return conf
 //   })
 
 instance.interceptors.response.use(
-  (response) : any => {
+  (response): any => {
     // only response.data.code == 0 success
     if (response.data.code != 0) {
       message(response.data.message, 'error')
@@ -55,10 +55,11 @@ instance.interceptors.response.use(
     }
     return response
   },
-  error => {
+  (error) => {
     message('服务器端可能发生错误,请稍后重试', 'error')
     return Promise.reject(error)
-  })
+  }
+)
 
 const api = {
   check,

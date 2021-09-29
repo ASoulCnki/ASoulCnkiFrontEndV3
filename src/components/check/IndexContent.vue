@@ -52,7 +52,7 @@ import Protocol from '@/components/public/Protocol.vue'
 import Notice from '@/components/public/Notice.vue'
 
 import { ref, reactive, computed, onMounted, watch } from 'vue'
-import { message, isChracterDraw, copyContent, storage } from '@/utils'
+import { message, isCharacterDraw, copyContent, storage } from '@/utils'
 import api from '@/api'
 import clipboard from 'clipboard'
 import { serverInfo } from '@/api/mulltiServer/types'
@@ -75,7 +75,7 @@ let isProtocolVisible = ref(false)
 let isAgreed = ref(true)
 
 const reportable = computed(() => response.startTime)
-const typeofText = computed(() => isChracterDraw(text) ? '字符画' : '普通小作文')
+const typeofText = computed(() => isCharacterDraw(text) ? '字符画' : '普通小作文')
 const rateColor = computed(() => {
   const percent = Number(response.rate)
   let color = 'green'
@@ -105,23 +105,7 @@ const check = async () => {
     {
       name: '枝网查重',
       url: 'https://asoulcnki.asia/v1/api/check'
-    },
-    {
-      name: '枝网查重',
-      url: 'https://asoulcnki.asia/v1/api/check'
-    },
-    {
-      name: '枝网查重',
-      url: 'https://asoulcnki.asia/v1/api/check'
-    },
-    {
-      name: '枝网查重',
-      url: 'https://asoulcnki.asia/v1/api/check'
-    },
-    {
-      name: '枝网查重',
-      url: 'https://asoulcnki.asia/v1/api/check'
-    },
+    }
   ]
 
   // const data = await api.check(text.value)

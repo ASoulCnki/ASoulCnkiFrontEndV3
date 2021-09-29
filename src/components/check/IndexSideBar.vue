@@ -8,7 +8,7 @@
       <p class="top-p">枝网原班人马打造，我们自己都溜到停不下来的优秀小作文展示平台</p>
       <p class="top-p">现提供多种小作文过滤器，详情请点击传送门后查看使用说明</p>
     </div>
-    <div class="right-top-description right-item pb-6">
+    <div class="right-item pb-6">
       <h3 class="text-lg pb-2 dark:text-gray-300">枝网查重系统介绍</h3>
       <p v-for="item in description" :key="item.key" class="text-sm">
         <b>{{ item.key }}</b>
