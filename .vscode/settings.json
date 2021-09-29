@@ -21,5 +21,21 @@
   "eslint.alwaysShowStatus": true,
   "eslint.validate": ["javascript", "typescript", "css", "less", "scss", "json", "vue", "html"],
   "volar.formatting.printWidth": 80,
-  "windicss.sortOnSave": true
+  "windicss.sortOnSave": true,
+  "cSpell.words": [
+    "ASOUL",
+    "ASOULCNKI",
+    "asoulcnkifrontend",
+    "bili",
+    "bilibili",
+    "cisincere",
+    "Parens",
+    "rpid",
+    "stylelint",
+    "vitejs",
+    "vuedx",
+    "vueuse",
+    "vuex",
+    "windi"
+  ]
 }
