@@ -5,7 +5,7 @@ export function textToLink(content: string): string {
   // replace before html tag
   content = content.replace(/<\/?[\S ]+>/g, '')
 
-  const regex = /(https?:\/\/|)(b23\.tv\/\S{0,8}|\S+\.bilibili.com\/\S+\d+)/g
+  const regex = /(https?:\/\/|){0,1}(b23\.tv\/(BV)?[\w\d]{0,10}|\w+\.bilibili.com\/[\w\d\/\?=&#]+)/g
 
   const parseLink = (url: string) => {
     //if not include http, add it
