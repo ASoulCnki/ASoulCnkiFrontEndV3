@@ -60,6 +60,7 @@
             <span
               class="pl-1 w-3 iconfont icon-clean"
               @click="data[index] = ''"
+              v-if="data[index].length > 0"
             />
           </div>
         </div>
@@ -122,7 +123,8 @@ const tagTextArray = computed(() => {
 }
 
 .filter-input-area {
-  @apply bg-white border rounded-md outline-none border-gray-400 mx-2 p-1 box-border dark:(bg-gray-700 text-gray-300) ;
+  @apply bg-white border rounded-md outline-none border-gray-400
+    m-2 p-1 box-border dark:(bg-gray-700 text-gray-300) ;
 }
 
 .filter-input {
@@ -130,8 +132,9 @@ const tagTextArray = computed(() => {
 }
 
 .label {
-  @apply border rounded-md border-blue-400 my-1 mx-2 px-2 text-blue-500 inline-block;
-  @apply dark:(text-gray-400 bg-gray-800 border-gray-700) ;
+  @apply border rounded-md border-blue-400 my-1 mx-2 tracking-wide
+    px-3 text-blue-500 inline-block
+    dark:(text-gray-400 bg-gray-800 border-gray-700) ;
 }
 
 .checkbox:checked ~ .label {
@@ -139,6 +142,6 @@ const tagTextArray = computed(() => {
 }
 
 .submit {
-  @apply rounded-md bg-blue-400 -mt-2 mb-1 py-1 px-5 dark:(bg-gray-600 text-gray-300) ;
+  @apply rounded-md -mt-2 mb-1 py-1 px-5 !bg-blue-400 dark:(bg-gray-600 text-gray-300) ;
 }
 </style>

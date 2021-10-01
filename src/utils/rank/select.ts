@@ -53,7 +53,7 @@ export function arrayToParams(data: Array<any>, filters: Array<RankFilter>) {
     let value: string | number = 0
 
     if (s.type == 'multi') {
-      value = data[index].join(',')
+      value = data[index].length == s.options!.length ? '' : data[index].join(',')
     }
     if (s.type == 'text') {
       value = handleKeywords(data[index]).join(',')
