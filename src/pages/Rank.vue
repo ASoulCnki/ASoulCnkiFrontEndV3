@@ -74,6 +74,7 @@ const watchGet = async () => {
   rankParams.pageNum = page.value
   rankParams.pageSize = 10
   await getRanking(rankParams)
+  scrollTo(0, 0)
 }
 
 const debounceDelay = 600
