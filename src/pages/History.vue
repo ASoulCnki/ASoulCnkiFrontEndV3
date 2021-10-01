@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { useTitle } from '@vueuse/core'
-import { onMounted } from 'vue-demi';
+import { onMounted } from 'vue';
 
 onMounted(() => {
   useTitle('枝网时光机')

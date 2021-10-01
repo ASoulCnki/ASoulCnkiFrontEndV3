@@ -3,7 +3,7 @@ import { linksData } from './LinksData'
 </script>
 
 <template>
-  <div class="flex justify-center w-full divide-x text-sm my-6">
+  <footer class="divide-x flex my-6 text-sm w-full justify-center">
     <div class="footer-links" v-for="group in linksData" :key="group.groupName">
       <p>{{ group.groupName }}</p>
       <a
@@ -17,17 +17,17 @@ import { linksData } from './LinksData'
         <span v-else>{{ link.name }}</span>
       </a>
     </div>
-  </div>
+  </footer>
 </template>
 
 <style scoped>
 .footer-links {
-  @apply box-border w-1/3 text-center mb-1;
+  @apply text-center mb-1 w-1/3 box-border;
 }
 
 .footer-links a,
 p {
-  @apply py-1 block dark:text-gray-400 text-gray-700;
+  @apply py-1 text-gray-700 block dark:text-gray-400;
 }
 
 .footer-links a {
@@ -36,7 +36,7 @@ p {
 
 .footer-links a,
 span {
-  @apply text-[13px] leading-relaxed;
+  @apply leading-relaxed text-[13px];
 }
 
 .footer-links p {

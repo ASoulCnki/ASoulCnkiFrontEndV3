@@ -49,6 +49,10 @@ export const linksData: ILinks = [
     groupName: '友情链接',
     links: [
       {
+        name: 'A-Soul Video',
+        url: 'https://asoul.video/',
+      },
+      {
         name: '一个魂的二创',
         url: 'https://asoul.cloud/',
       },
