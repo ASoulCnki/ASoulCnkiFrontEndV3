@@ -36,13 +36,13 @@ export default defineConfig({
       workbox: {
         runtimeCaching: [
           {
-            urlPattern: /^https:\/\/asoulcnki.asia\/v1\/api\/ranking/i,
+            urlPattern: /^\/v1\/api\/ranking\/.*/i,
             handler: 'NetworkFirst',
             options: {
               cacheName: 'asoulcnki-api-cache',
               expiration: {
                 maxEntries: 10,
-                maxAgeSeconds: 60 * 60 * 24,
+                maxAgeSeconds: 60 * 60 * 1.5,
               },
               cacheableResponse: {
                 statuses: [0, 200],
@@ -50,7 +50,7 @@ export default defineConfig({
             },
           },
           {
-            urlPattern: /^https:\/\/asoulcnki.asia\/assets\/.*/i,
+            urlPattern: /^\/assets\/.*/i,
             handler: 'CacheFirst',
             options: {
               cacheName: 'asoulcnki-static-cache',
