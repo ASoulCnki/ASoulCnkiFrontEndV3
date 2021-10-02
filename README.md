@@ -49,11 +49,6 @@
 1. 页码切换悬浮屏幕右侧
 2. 使用方向键 `←` `→` 翻页
 
-#### 尚未完成的部分
-
-1. 待添加条件筛选组件在顶部框显示当前筛选的条件
-2. 待修复条件筛选组件和换页组件冲突产生的 BUG
-
 ### Result 页
 
 尚未迁移。
@@ -62,7 +57,7 @@
 
 ## 其他
 
-1. <del>目前 Element-Plus 没有局部引入，构建后体积较大，后续配置局部引入</del>(已完成)
+1. [x]Element 局部引入
 
    备忘: 目前使用的组件
 
@@ -71,9 +66,9 @@
    - ElCarousel
    - ElCarouselItem
 
-2. 接口文档参见[这里](https://github.com/ASoulCnki/ASoulCnkiBackend/blob/master/api.md)
+2. [ ]接口文档参见[这里](https://github.com/ASoulCnki/ASoulCnkiBackend/blob/master/api.md)
 
-3. 新增 PWA 适配
+3. [x]新增 PWA 适配
 
 ## 项目结构
 
