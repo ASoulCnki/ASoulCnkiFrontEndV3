@@ -54,6 +54,7 @@
             <input
               type="text"
               v-model="data[index]"
+              @keyup="keyup($event)"
               class="filter-input"
               placeholder="最多三个长度不超过10的关键词"
             />
@@ -87,6 +88,9 @@ const data = ref<Array<any>>([])
 const visible = ref(false)
 const store = useStore()
 
+const keyup = (event: any) => {
+  if (event.key == 'Enter') submit()
+}
 
 const submit = () => {
   let emitData = data.value.map(s => {
