@@ -21,11 +21,19 @@
         placeholder="内容字数不少于10个字，不多于1000字。输入信息后，点击下方「提交小作文」进行查重 !"
         :maxlength="maxlength"
         v-model="text"
+        ref="input"
         class="text-input"
       />
       <div class="text-status">
         <div class="text-status-item float-left">
-          <el-checkbox v-model="isAgreed" />我已同意
+          <label>
+            <input
+              type="checkbox"
+              class="h-3 w-4 inline-block"
+              v-model="isAgreed"
+            />
+          </label>
+          我已同意
           <a @click="isProtocolVisible = true" class="url">用户协议</a>
         </div>
         <div class="text-status-item float-right">{{ typeofText }}</div>
@@ -53,6 +61,7 @@ import Notice from '@/components/public/Notice.vue'
 
 import { ref, reactive, computed, onMounted, watch } from 'vue'
 import { message, isCharacterDraw, copyContent, storage } from '@/utils'
+import { onStartTyping } from '@vueuse/core'
 import api from '@/api'
 import clipboard from 'clipboard'
 import { serverInfo } from '@/api/mulltiServer/types'
@@ -70,9 +79,16 @@ let response = reactive<any>({
 })
 const text = ref('')
 
-let isComplete = ref(true)
-let isProtocolVisible = ref(false)
-let isAgreed = ref(true)
+const isComplete = ref(true)
+const isProtocolVisible = ref(false)
+const isAgreed = ref(true)
+const input = ref<HTMLInputElement | null>(null)
+
+onStartTyping(() => {
+  // @ts-ignore
+  if (!input.value?.active)
+    input.value!.focus()
+})
 
 const reportable = computed(() => response.startTime)
 const typeofText = computed(() => isCharacterDraw(text) ? '字符画' : '普通小作文')

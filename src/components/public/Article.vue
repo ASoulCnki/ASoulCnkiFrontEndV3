@@ -66,7 +66,7 @@ const markedContent = computed(() => diffText(props.rawText, props.article.conte
 const content = computed(() => textToLink(props.article.content))
 
 const userLink = 'https://space.bilibili.com/' + props.article.author.id
-const userName = props.article.author.name
+const userName = computed(() => props.article.author.name)
 </script>
 
 <style>
