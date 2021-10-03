@@ -36,7 +36,7 @@ export default defineConfig({
       workbox: {
         runtimeCaching: [
           {
-            urlPattern: /^\/v1\/api\/ranking\/.*/i,
+            urlPattern: /^https:\/\/asoulcnki.asia\/v1\/api\/ranking\/.*/i,
             handler: 'NetworkFirst',
             options: {
               cacheName: 'asoulcnki-api-cache',
@@ -50,27 +50,13 @@ export default defineConfig({
             },
           },
           {
-            urlPattern: /^\/assets\/.*/i,
-            handler: 'CacheFirst',
-            options: {
-              cacheName: 'asoulcnki-static-cache',
-              expiration: {
-                maxEntries: 10,
-                maxAgeSeconds: 60 * 60 * 24 * 365,
-              },
-              cacheableResponse: {
-                statuses: [0, 200],
-              },
-            },
-          },
-          {
             urlPattern: /^https:\/\/*\.hdslb\.com\/.*/i,
             handler: 'CacheFirst',
             options: {
               cacheName: 'asoulcnki-static-image-cache',
               expiration: {
                 maxEntries: 10,
-                maxAgeSeconds: 60 * 60 * 24 * 31,
+                maxAgeSeconds: 60 * 60 * 24,
               },
               cacheableResponse: {
                 statuses: [0, 200],
@@ -81,7 +67,7 @@ export default defineConfig({
             urlPattern: /^https:\/\/cdn\.jsdelivr\.net\/.*/i,
             handler: 'CacheFirst',
             options: {
-              cacheName: 'asoulcnki-static-image-cache',
+              cacheName: 'asoulcnki-static-style-cache',
               expiration: {
                 maxEntries: 10,
                 maxAgeSeconds: 60 * 60 * 24 * 31,
