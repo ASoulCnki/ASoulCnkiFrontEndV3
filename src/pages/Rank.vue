@@ -9,7 +9,14 @@
     </div>
     <div class="fixed-element">
       <label>
-        <input type="text" class="page-input" v-model.number.lazy="currPage" />
+        <el-tooltip placement="left" :content="`共${totalPage}页`">
+          <input
+            type="text"
+            class="page-input"
+            :maxlength="totalPage.toString().length"
+            v-model.number.lazy="currPage"
+          />
+        </el-tooltip>
       </label>
     </div>
     <div class="bottom-40 fixed-button" @click="add">
