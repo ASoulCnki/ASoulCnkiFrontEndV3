@@ -9,7 +9,7 @@
     </div>
     <div class="fixed-element">
       <label>
-        <input type="text" class="page-input" v-model.number.lazy="page" />
+        <input type="text" class="page-input" v-model.number.lazy="currPage" />
       </label>
     </div>
     <div class="bottom-40 fixed-button" @click="add">
