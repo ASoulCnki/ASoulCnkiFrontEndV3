@@ -23,3 +23,11 @@
 .el-overlay {
   @apply m-0;
 }
+
+.el-popper {
+  @apply rounded-lg text-[13px] text-gray-500 dark:(text-gray-300) ;
+}
+
+.el-popper.is-light {
+  @apply dark:(bg-gray-800 border-gray-700) ;
+}

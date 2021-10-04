@@ -9,7 +9,12 @@
     </div>
     <div class="fixed-element">
       <label>
-        <el-tooltip placement="left" :content="`共${totalPage}页`">
+        <el-tooltip
+          placement="left"
+          :content="`共 ${totalPage} 页`"
+          effect="light"
+          :visible-arrow="false"
+        >
           <input
             type="text"
             class="page-input"
