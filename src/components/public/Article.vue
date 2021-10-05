@@ -7,7 +7,10 @@
           <span class="hidden sm:inline">{{ userName }}</span>
           <span class="sm:hidden">{{ userName.substr(0, 5) + '...' }}</span>
         </a>
-        <span class="px-2 text-green-500" v-if="article.originId == -1">[原创|原偷]</span>
+        <span
+          class="px-2 text-green-500"
+          v-if="article.originId == '-1'"
+        >[原创|原偷]</span>
       </div>
       <div class="right-button text-blue-600 hover">
         <a :href="article.url" target="_blank" rel="noreferrer">
@@ -31,7 +34,7 @@
       </div>
       <div class="footer-attr">
         <span class="iconfont icon-qoute" />
-        {{ article.qoute }}
+        {{ article.quote }}
       </div>
       <div class="footer-attr">
         <span class="iconfont icon-time" />
@@ -41,20 +44,22 @@
   </div>
 </template>
 
-<script setup>
+<script lang="ts" setup>
 import { computed } from 'vue'
-import { message, diffText } from '@/utils'
+import { message, diffText, Article as IArticle } from '@/utils'
 import { textToLink } from '@/utils/article/link'
 import clipboard from 'clipboard'
 
-const props = defineProps({
-  article: Object,
-  isMarked: Boolean,
-  rawText: String
+const props = withDefaults(defineProps<{
+  article: IArticle,
+  isMarked?: boolean,
+  rawText?: string
+}>(), {
+  isMarked: false
 })
 
 const copy = () => {
-  const clip = new clipboard('.copy', { text: () => props.article.content })
+  const clip = new clipboard('.copy', { text: () => props.article!.content })
     .on('success', () => {
       message('复制成功')
       clip.destroy()
@@ -62,7 +67,11 @@ const copy = () => {
     .on('error', () => message('复制失败', 'error'))
 }
 
-const markedContent = computed(() => diffText(props.rawText, props.article.content, 4, 'strong'))
+const markedContent = computed(() => {
+  return (props.rawText)
+    ? diffText(props.rawText, props.article.content, 4, 'strong')
+    : props.article.content
+})
 const content = computed(() => textToLink(props.article.content))
 
 const userLink = 'https://space.bilibili.com/' + props.article.author.id

@@ -5,7 +5,10 @@ import { convert } from './check/index'
 import storage from './storage'
 import { copyContent, isCharacterDraw } from './check'
 
-export function message(message: string, type: 'info' | 'success' | 'warning' | 'error' = 'success') {
+export function message(
+  message: string,
+  type: 'info' | 'success' | 'warning' | 'error' = 'success'
+) {
   ElMessage({ message, type, showClose: true })
 }
 
@@ -35,7 +38,7 @@ export interface Article {
   content: string
   like: number
   allLike: number
-  qoute: number
+  quote: number
   originId: string
   url: string
   rate?: number
@@ -58,7 +61,7 @@ function handleRelated(s: reply): Article {
     content: s.content,
     like: s.like_num,
     allLike: s.similar_like_sum,
-    qoute: s.similar_count,
+    quote: s.similar_count,
     originId: s.origin_rpid,
     url: parseURL(s.oid, s.dynamic_id, s.rpid, s.type_id),
   }
@@ -85,4 +88,14 @@ function parseURL(oid: string, dynamic_id: string, rpid: string, type: number) {
   return `https://${baseURL}/#reply${rpid}`
 }
 
-export { diffText, textToLink, parseTime, parseURL, convert, handleRelated, copyContent, isCharacterDraw, storage }
+export {
+  diffText,
+  textToLink,
+  parseTime,
+  parseURL,
+  convert,
+  handleRelated,
+  copyContent,
+  isCharacterDraw,
+  storage,
+}

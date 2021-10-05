@@ -1,7 +1,7 @@
 <template>
   <div class="article-content">
-    <div class="is-marked" v-if="articleArray.length > 0">
-      共找到 {{ articleArray.length }} 条结果
+    <div class="is-marked" v-if="length > 0">
+      共找到 {{ length }} 条结果
       <div class="float-right">
         重复区间标注
         <label for="mark" class="button">
@@ -17,7 +17,7 @@
     </div>
     <Article
       v-for="s in articleArray"
-      :key="s.replyId"
+      :key="s.id"
       :article="s"
       :isMarked="isMarked"
       :rawText="rawText"
@@ -25,14 +25,21 @@
   </div>
 </template>
 
-<script setup>
-import { ref } from 'vue'
+<script lang="ts" setup>
+import { ref, computed } from 'vue'
 import Article from '@/components/public/Article.vue'
+import { Article as IArticle } from '@/utils'
 
-defineProps({
-  articleArray: Array,
-  rawText: String,
+const props = withDefaults(
+  defineProps<{
+    articleArray: IArticle[],
+    rawText: string,
+  }>(), {
+  articleArray: <any>[],
+  rawText: ''
 })
+
+const length = computed(() => props.articleArray.length)
 
 const isMarked = ref(false)
 </script>

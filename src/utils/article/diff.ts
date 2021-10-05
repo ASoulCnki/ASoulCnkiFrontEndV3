@@ -19,7 +19,9 @@ const merge = function (intervals: Array<cache>) {
     const lastInterval = outputs[outputs.length - 1]
     const [currLeft, currRight] = [s.start, s.end]
 
-    !!(lastInterval.end < currLeft) ? outputs.push(s) : (lastInterval.end = Math.max(lastInterval.end, currRight))
+    !!(lastInterval.end < currLeft)
+      ? outputs.push(s)
+      : (lastInterval.end = Math.max(lastInterval.end, currRight))
   })
 
   return outputs.sort((a, b) => b.start - a.start)
