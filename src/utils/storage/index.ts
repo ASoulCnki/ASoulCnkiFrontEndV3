@@ -1,4 +1,4 @@
-// Manaeg some localStorage
+// Manage some localStorage
 
 const HISTORY_KEY = 'history'
 const AGREE_KEY = 'agree'
@@ -30,7 +30,7 @@ function addHistory(appendVal: any) {
 /**
  * Clear old History Storage
  */
-function clearHistoty() {
+function clearHistory() {
   localStorage.setItem(HISTORY_KEY, JSON.stringify([]))
 }
 
@@ -38,7 +38,7 @@ function clearHistoty() {
 const history = {
   get: getHistory,
   add: addHistory,
-  clear: clearHistoty,
+  clear: clearHistory,
 }
 
 function getAgree() {
