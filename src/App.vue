@@ -1,8 +1,10 @@
 <template>
   <div class="main">
-    <keep-alive>
-      <router-view />
-    </keep-alive>
+    <router-view v-slot="{ Component }">
+      <keep-alive>
+        <component :is="Component" />
+      </keep-alive>
+    </router-view>
     <div class="return-top" @click="toTop">
       <span class="iconfont icon-top" />
     </div>

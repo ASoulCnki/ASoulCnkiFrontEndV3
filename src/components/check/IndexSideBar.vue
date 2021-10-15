@@ -3,7 +3,7 @@
     <div class="space-y-3 right-item">
       <p class="font-bold text-lg text-red-600">
         新功能!枝江作文展
-        <a href="/rank" class="text-blue-400">点此进入</a>
+        <router-link to="/rank" class="text-blue-400">点此进入</router-link>
       </p>
       <p class="top-p">枝网原班人马打造，我们自己都溜到停不下来的优秀小作文展示平台</p>
       <p class="top-p">现提供多种小作文过滤器，详情请点击传送门后查看使用说明</p>

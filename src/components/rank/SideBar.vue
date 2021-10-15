@@ -72,7 +72,7 @@
       <p class="text">受制于算法精度和评论数据的数量，以上问题我们目前无法解决，请期待后续技术攻关。</p>
     </div>
     <div class="discription">
-      <a href="/" class="font-semibold tracking-wider url">返回枝网查重</a>
+      <router-link to="/" class="font-semibold tracking-wider url">返回枝网查重</router-link>
     </div>
     <Links />
   </div>
