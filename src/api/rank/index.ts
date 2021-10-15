@@ -1,5 +1,5 @@
 import { instance } from '../index'
-import { parseTime, handleRelated, message, reply, Article } from '../../utils'
+import { parseTime, handleRelated, reply, Article } from '../../utils'
 import { AxiosResponse } from 'axios'
 
 interface RankResponse {
@@ -43,7 +43,6 @@ export async function ranking(params: RankParams) {
       response.total = data.all_count
     })
     .catch((err: AxiosResponse) => {
-      message('服务器异常', 'error')
       throw new Error(err.toString())
     })
 
