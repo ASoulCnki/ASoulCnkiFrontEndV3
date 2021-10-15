@@ -1,5 +1,5 @@
 import { convertCheck } from './index'
-import { allRequestFactory } from '../mulltiServer/index'
+import { allRequestFactory } from '../multiServer/index'
 
 // handle
 function handleCheck(responses: any[]) {

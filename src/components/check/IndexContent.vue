@@ -64,7 +64,7 @@ import { message, isCharacterDraw, copyContent, storage } from '@/utils'
 import { onStartTyping } from '@vueuse/core'
 import api from '@/api'
 import clipboard from 'clipboard'
-import { serverInfo } from '@/api/mulltiServer/types'
+import { serverInfo } from '@/api/multiServer/types'
 
 // max textarea length
 const maxlength = 1000
