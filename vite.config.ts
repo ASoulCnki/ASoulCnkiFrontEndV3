@@ -11,7 +11,11 @@ export default defineConfig({
     vue(),
     WindiCSS(),
     VitePluginComponents({
-      customComponentResolvers: [ElementPlusResolver()],
+      customComponentResolvers: [
+        ElementPlusResolver({
+          importStyle: false,
+        }),
+      ],
     }),
     styleImport({
       libs: [
@@ -42,7 +46,7 @@ export default defineConfig({
               cacheName: 'asoulcnki-api-cache',
               expiration: {
                 maxEntries: 10,
-                maxAgeSeconds: 60 * 60 * 1.5,
+                maxAgeSeconds: 60 * 60 * 24 * 7,
               },
               cacheableResponse: {
                 statuses: [0, 200],
