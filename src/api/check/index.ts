@@ -25,7 +25,6 @@ export async function check(text: string): Promise<Partial<CheckResponse>> {
       response = convertCheck(data)
     })
     .catch((err) => {
-      message('请求异常，请稍后重试', 'error')
       throw new Error(err)
     })
 
