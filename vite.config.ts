@@ -1,7 +1,8 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import WindiCSS from 'vite-plugin-windicss'
-import VitePluginComponents, { ElementPlusResolver } from 'vite-plugin-components'
+import Components from 'unplugin-vue-components/vite'
+import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 import styleImport from 'vite-plugin-style-import'
 import { VitePWA } from 'vite-plugin-pwa'
 
@@ -10,8 +11,8 @@ export default defineConfig({
   plugins: [
     vue(),
     WindiCSS(),
-    VitePluginComponents({
-      customComponentResolvers: [
+    Components({
+      resolvers: [
         ElementPlusResolver({
           importStyle: false,
         }),
@@ -35,9 +36,10 @@ export default defineConfig({
     VitePWA({
       mode: 'development',
       base: '/',
-      registerType: process.env.CLAIMS === 'true' ? 'autoUpdate' : undefined,
+      registerType: 'autoUpdate',
       includeAssets: ['favicon.svg', 'robots.txt', 'apple-touch-icon.png'],
       workbox: {
+        disableDevLogs: process.env.NODE_ENV === 'production',
         runtimeCaching: [
           {
             urlPattern: /^https:\/\/asoulcnki.asia\/v1\/api\/ranking\/.*/i,
@@ -47,20 +49,6 @@ export default defineConfig({
               expiration: {
                 maxEntries: 10,
                 maxAgeSeconds: 60 * 60 * 24 * 7,
-              },
-              cacheableResponse: {
-                statuses: [0, 200],
-              },
-            },
-          },
-          {
-            urlPattern: /^https:\/\/*\.hdslb\.com\/.*/i,
-            handler: 'CacheFirst',
-            options: {
-              cacheName: 'asoulcnki-static-image-cache',
-              expiration: {
-                maxEntries: 10,
-                maxAgeSeconds: 60 * 60 * 24,
               },
               cacheableResponse: {
                 statuses: [0, 200],
