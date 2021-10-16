@@ -2,20 +2,16 @@
 
 ![index](markdown/index.png)
 
-对原本的枝网前端进行重构和迁移
-
-<del>现阶段，枝网仍使用原本 Vue2.0 的版本，迁移完成前，旧版前端也会继续实装新功能<del>
-
-已迁移完成
+[枝网查重](https://asoulcnki.asia)的前端
 
 **待迁移完成后更换新版本并停止维护旧版本**
 
 ## 迁移描述
 
-1. 从 Vue2 迁移到 Vue3 + TS
-2. 打包工具更换为 Vite
-3. 使用 WindiCSS 重构样式
-4. 重新调整部分样式，重点是夜间模式配色
+1. [x] 从 Vue2 迁移到 Vue3 + TS
+2. [x] 打包工具更换为 Vite
+3. [x] 使用 WindiCSS 重构样式
+4. [x] 重新调整部分样式，重点是夜间模式配色
 
 ## 如何贡献
 
@@ -49,15 +45,9 @@
 1. 页码切换悬浮屏幕右侧
 2. 使用方向键 `←` `→` 翻页
 
-### Result 页
-
-尚未迁移。
-
-由于用户使用次数较少，新版本可能会移除该功能
-
 ## 其他
 
-1. [x]Element 局部引入
+1. [x] Element 局部引入
 
    备忘: 目前使用的组件
 
@@ -66,9 +56,9 @@
    - ElCarousel
    - ElCarouselItem
 
-2. [ ]接口文档参见[这里](https://github.com/ASoulCnki/ASoulCnkiBackend/blob/master/api.md)
+2. [x] 接口文档参见[这里](https://github.com/ASoulCnki/.github/tree/master/api)
 
-3. [x]新增 PWA 适配
+3. [x] 新增 PWA 适配
 
 ## 项目结构
 
@@ -81,11 +71,10 @@ src 源码目录
 │   ├── css      样式和字体文件
 │   └── images   图片文件
 ├── components   组件
-│   ├── activity 活动相关组件(彩蛋)
 │   ├── check    主站(查重)组件
 │   ├── public   公共组件(小作文组件，友情链接，顶部通知栏，侧边栏跑马灯，用户协议)
-│   ├── rank     作文展组件
-│   └── result   查重结果页组件
+│   └── rank     作文展组件
+├── hooks
 ├── libs         库文件夹，目前只有 Element-Plus
 ├── pages        页面文件夹(Check, Rank)
 ├── router       前端路由(目前未根据组件拆分)
