@@ -64,7 +64,6 @@ import { message, isCharacterDraw, copyContent, storage } from '@/utils'
 import { onStartTyping } from '@vueuse/core'
 import api from '@/api'
 import clipboard from 'clipboard'
-import { serverInfo } from '@/api/multiServer/types'
 
 // max textarea length
 const maxlength = 1000
@@ -117,21 +116,25 @@ const check = async () => {
     return
   }
 
-  const serverInfo: serverInfo[] = [
-    {
-      name: '枝网查重',
-      url: 'https://asoulcnki.asia/v1/api/check'
-    }
-  ]
+  // const serverInfo: serverInfo[] = [
+  //   {
+  //     name: '枝网查重',
+  //     url: 'https://asoulcnki.asia/v1/api/check'
+  //   }
+  // ]
 
-  // const data = await api.check(text.value)
-  const data = await api.allCheck(serverInfo, { data: { text: text.value }, method: 'post' })
+  const data = await api.check(text.value)
+  // const data = await api.allCheck(serverInfo, { data: { text: text.value }, method: 'post' })
   response.rate = data.rate
   response.articleArray = data.articleArray
   response.startTime = data.startTime
   response.lastUpdate = data.lastUpdate
 
-  message('点击复制以复制查重报告')
+  const tipMessage = (data.articleArray!.length == 0)
+    ? '没有找到重复的小作文捏'
+    : '点击复制以获取查重报告'
+
+  message(tipMessage)
   isComplete.value = true
 }
 

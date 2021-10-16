@@ -13,7 +13,7 @@ import { ranking } from './rank'
 const instance = axios.create({
   // When prod, baseURL can replace to '/'
   baseURL: 'https://asoulcnki.asia/v1/api/',
-  timeout: 6000, //millisecond
+  timeout: 8000, //millisecond
 })
 
 instance.interceptors.request.use((conf) => {

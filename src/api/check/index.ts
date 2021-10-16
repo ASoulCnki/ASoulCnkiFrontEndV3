@@ -15,7 +15,7 @@ interface CheckResponse {
  * @param {String} text need checked text (10 < text.length < 1000)
  * @returns response startTime, lastUpdate, rate, articleArray
  */
-export async function check(text: string) {
+export async function check(text: string): Promise<Partial<CheckResponse>> {
   let response = {}
   const data = { text: text }
   await instance
