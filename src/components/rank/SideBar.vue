@@ -6,6 +6,10 @@
         <span class="mr-1 -ml-1 iconfont icon-time"></span>
         上次更新时间: {{ endTime }}
       </h2>
+      <p v-if="useServiceWorker()" class="px-1 text-cyan-600">
+        <span class="mr-1 -ml-1 iconfont icon-right"></span>
+        离线查看功能可用
+      </p>
       <p class="text">
         枝网作文展旨在收录原创（原偷小作文），由于爬取评论区有限，数据不一定准确，仅供娱乐。本榜单
         <span class="high">定期刷新</span>。作文展的收录范围是
@@ -80,6 +84,7 @@
 
 <script setup>
 import Links from '@/components/public/Links/Links.vue'
+import { useServiceWorker } from '@/hooks/useServiceWorker'
 defineProps({
   endTime: String
 })

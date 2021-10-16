@@ -32,4 +32,8 @@ const router = createRouter({
   history: createWebHistory(),
 })
 
+router.afterEach(() => {
+  scrollTo(0, 0)
+})
+
 export default router
