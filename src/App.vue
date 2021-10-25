@@ -1,3 +1,7 @@
+<script lang="ts" setup>
+const toTop = () => scrollTo(0, 0)
+</script>
+
 <template>
   <div class="main">
     <router-view v-slot="{ Component }">
@@ -10,10 +14,6 @@
     </div>
   </div>
 </template>
-
-<script setup>
-const toTop = () => scrollTo(0, 0)
-</script>
 
 <style>
 @import url("@/assets/css/unit-fixed.css");

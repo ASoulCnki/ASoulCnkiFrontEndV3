@@ -57,7 +57,7 @@ export default defineConfig({
           },
           {
             urlPattern: /^https:\/\/cdn\.jsdelivr\.net\/.*/i,
-            handler: 'CacheFirst',
+            handler: 'NetworkFirst',
             options: {
               cacheName: 'asoulcnki-static-style-cache',
               expiration: {

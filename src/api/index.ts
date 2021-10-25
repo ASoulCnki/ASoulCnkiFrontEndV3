@@ -10,9 +10,11 @@ import { message } from '../utils'
 import { check, allCheck } from './check'
 import { ranking } from './rank'
 
+const baseURL = process.env.NODE_ENV == 'production' ? '/v1/api/' : 'https://asoulcnki.asia/v1/api/'
+
 const instance = axios.create({
   // When prod, baseURL can replace to '/'
-  baseURL: 'https://asoulcnki.asia/v1/api/',
+  baseURL,
   timeout: 8000, //millisecond
 })
 
