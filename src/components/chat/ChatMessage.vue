@@ -12,7 +12,10 @@ const props = withDefaults(
 
 <template>
   <div class="flex w-full py-2" :style="{ direction: isMe ? 'rtl' : 'ltr' }">
-    <img :src="props.avatar" class="h-30px w-30px avatar" />
+    <img
+      :src="isMe ? '/assets/images/me.png' : '/assets/images/cao.jpg'"
+      class="h-30px w-30px avatar"
+    />
     <div
       :class="{ 'is-me': isMe }"
       style="direction: ltr;"
