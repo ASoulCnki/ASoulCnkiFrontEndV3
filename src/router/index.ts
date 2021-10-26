@@ -1,8 +1,7 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 import Check from '@/pages/Check.vue'
 import Rank from '@/pages/Rank.vue'
-import Search from '@/pages/Search.vue'
-import History from '@/pages/History.vue'
+import QA from '@/pages/QA.vue'
 
 const routes: RouteRecordRaw[] = [
   {
@@ -16,24 +15,14 @@ const routes: RouteRecordRaw[] = [
     component: Rank,
   },
   {
-    path: '/search',
-    name: 'search',
-    component: Search,
-  },
-  {
-    path: '/history',
-    name: 'history',
-    component: History,
+    path: '/qa',
+    name: 'qa',
+    component: QA,
   },
   {
     path: '/rank:pathMatch(.*)',
     name: 're-rank',
     redirect: '/rank',
-  },
-  {
-    path: '/:pathMatch(.*)',
-    name: 'not-found',
-    redirect: '/',
   },
 ]
 

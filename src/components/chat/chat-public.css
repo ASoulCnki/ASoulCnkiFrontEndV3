@@ -1,0 +1,4 @@
+.avatar {
+  @apply bg-white border rounded-full border-gray-200
+    mx-2 overflow-hidden;
+}
