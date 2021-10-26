@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import ReturnTop from '@/components/public/ReturnTop/index.vue'
 const toTop = () => scrollTo(0, 0)
 </script>
 
@@ -9,9 +10,7 @@ const toTop = () => scrollTo(0, 0)
         <component :is="Component" />
       </keep-alive>
     </router-view>
-    <div class="return-top" @click="toTop">
-      <span class="iconfont icon-top" />
-    </div>
+    <ReturnTop />
   </div>
 </template>
 
