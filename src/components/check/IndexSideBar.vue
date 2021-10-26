@@ -1,12 +1,15 @@
 <template>
   <div class="text-sm">
     <div class="space-y-3 right-item">
-      <p class="font-bold text-lg text-red-600">
-        新功能!枝江作文展
-        <router-link to="/rank" class="text-blue-400">点此进入</router-link>
+      <p class="font-bold text-base text-teal-500">
+        <router-link to="/rank">📄 枝江作文展: 小作文素材库</router-link>
       </p>
-      <p class="top-p">枝网原班人马打造，我们自己都溜到停不下来的优秀小作文展示平台</p>
-      <p class="top-p">现提供多种小作文过滤器，详情请点击传送门后查看使用说明</p>
+      <p>收集评论区优秀小作文，现已支持条件筛选和一键复制</p>
+      <br />
+      <span class="font-bold text-base text-blue-600">
+        <router-link to="/qa">🧎‍♂️←🏃‍♂️ 阿草的太极教室[测试版]</router-link>
+      </span>
+      <p>模仿阿草的语气生成QA，和阿草学习打太极。目前尚在测试阶段，欢迎反馈bug</p>
     </div>
     <div class="right-item pb-6">
       <h3 class="text-lg pb-2 dark:text-gray-300">枝网查重系统介绍</h3>
