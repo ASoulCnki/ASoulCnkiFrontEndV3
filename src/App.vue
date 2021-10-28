@@ -1,6 +1,26 @@
 <script lang="ts" setup>
+import { useActivityOnce } from './hooks'
+import { computed, ref, onMounted } from 'vue';
 import ReturnTop from '@/components/public/ReturnTop/index.vue'
-const toTop = () => scrollTo(0, 0)
+import Birthday from './components/activities/Birthday.vue';
+const { isDuring } = useActivityOnce('2021-10-28', '2021-11-3')
+const isVisible = ref(true)
+
+const visible = computed(() => {
+  return isDuring.value && isVisible.value
+})
+
+const hideDialog = () => {
+  localStorage.setItem('useActivityOnce', 'true')
+  isVisible.value = false
+}
+
+onMounted(() => {
+  if (localStorage.getItem('useActivityOnce') === 'true') {
+    isVisible.value = false
+  }
+})
+
 </script>
 
 <template>
@@ -11,12 +31,23 @@ const toTop = () => scrollTo(0, 0)
       </keep-alive>
     </router-view>
     <ReturnTop />
+    <el-dialog
+      v-model="visible"
+      title="🎉祝我们的小狼公主珈乐生日快乐"
+      :width="null"
+      :before-close="hideDialog"
+      :lock-scroll="false"
+    >
+      <div class="px-5">
+        <Birthday />
+      </div>
+    </el-dialog>
   </div>
 </template>
 
 <style>
 @import url("@/assets/css/unit-fixed.css");
-
+@import url("@/assets/css/fix-element.css");
 body {
   @apply h-full bg-gray-100;
   @apply dark:bg-gray-900 dark:text-gray-400;

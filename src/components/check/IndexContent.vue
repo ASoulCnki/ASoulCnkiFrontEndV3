@@ -45,7 +45,7 @@
     <el-dialog
       v-model="isProtocolVisible"
       title="枝网查重用户协议"
-      width="none"
+      :width="null"
       :lock-scroll="false"
     >
       <Protocol />

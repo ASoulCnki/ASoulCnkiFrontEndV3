@@ -16,6 +16,10 @@
   @apply dark:(bg-gray-800 text-gray-400) ;
 }
 
+.el-dialog__title {
+  @apply font-bold text-base;
+}
+
 .el-dialog__body {
   @apply p-0 pb-2;
 }
