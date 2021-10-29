@@ -1,19 +1,19 @@
 <script lang="ts" setup>
-import { useActivityOnce } from './hooks'
+import { useDuring } from './hooks'
 import { computed, ref, onMounted } from 'vue';
 import ReturnTop from '@/components/public/ReturnTop/index.vue'
-import Birthday from './components/activities/Birthday.vue';
-const { isDuring } = useActivityOnce('2021-10-28', '2021-11-3')
+import Birthday from './components/activities/BirthdayDialog.vue';
+const isDuring = useDuring('2021-10-28', '2021-11-3')
 const isVisible = ref(true)
 
-const visible = computed(() => {
-  return isDuring.value && isVisible.value
-})
+const visible = computed(() => isDuring.value && isVisible.value)
 
 const hideDialog = () => {
   localStorage.setItem('useActivityOnce', 'true')
   isVisible.value = false
 }
+
+const showDialog = () => isVisible.value = true
 
 onMounted(() => {
   if (localStorage.getItem('useActivityOnce') === 'true') {
@@ -30,6 +30,10 @@ onMounted(() => {
         <component :is="Component" />
       </keep-alive>
     </router-view>
+    <div
+      class="bg-carol rounded-l-lg p-2 transition right-0 bottom-70 animate-pulse animate-repeat-2 fixed"
+      @click="showDialog"
+    >🎂</div>
     <ReturnTop />
     <el-dialog
       v-model="visible"

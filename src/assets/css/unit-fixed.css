@@ -23,7 +23,7 @@
 
 /* 制造一块悬浮区域 */
 .fixed-area {
-  @apply right-7 fixed md:right-10;
+  @apply right-0 fixed md:right-10;
 }
 
 /* 返回顶部按钮 */
