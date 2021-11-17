@@ -13,6 +13,10 @@
     </div>
     <div class="right-item pb-6">
       <h3 class="text-lg pb-2 dark:text-gray-300">枝网查重系统介绍</h3>
+      <p class="font-bold leading-loose mb-2 pl-3">
+        “我看到了你们搞的什么枝江查重，好厉害！怎么做到的？”
+        ——向晚大魔王
+      </p>
       <p v-for="item in description" :key="item.key" class="text-sm">
         <b>{{ item.key }}</b>
         <em

@@ -31,6 +31,7 @@ onMounted(() => {
       </keep-alive>
     </router-view>
     <div
+      v-if="isVisible"
       class="bg-carol rounded-l-lg p-2 transition right-0 bottom-70 animate-pulse animate-repeat-2 fixed"
       @click="showDialog"
     >🎂</div>
