@@ -2,7 +2,7 @@
 import ChatPC from '@/components/chat/ChatPC.vue'
 
 import { shallowRef, ref, onMounted } from 'vue'
-import { useEventListener, useTitle } from '@vueuse/core'
+import { useEventListener } from '@vueuse/core'
 import { getReply, useChatHistory } from '@/api/qa'
 
 type ChatMessageType = {
@@ -38,7 +38,6 @@ function clearHistory () {
 }
 
 onMounted(() => {
-  useTitle('阿草的太极教室')
   chatHistory.value = get() || []
 })
 

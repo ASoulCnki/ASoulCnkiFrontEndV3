@@ -46,8 +46,6 @@ let response = reactive({
 })
 
 onMounted(async () => {
-  useTitle('枝江作文展')
-  scrollTo(0, 0)
   const params = { sortMode: 0, timeRangeMode: 0, pageSize: 10, pageNum: 1 }
   await getRanking(params)
 })
@@ -120,7 +118,7 @@ onKeyUp('ArrowLeft', sub)
 @import url("@/assets/css/float-2col.css");
 @import url("@/assets/css/unit-fixed.css");
 
-/* moblie fixed page changer */
+/* mobile fixed page changer */
 .page-sm {
   @apply space-y-3 pb-2 bottom-24;
 }

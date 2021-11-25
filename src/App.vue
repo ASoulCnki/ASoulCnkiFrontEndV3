@@ -19,6 +19,13 @@ onMounted(() => {
   if (localStorage.getItem('useActivityOnce') === 'true') {
     isVisible.value = false
   }
+
+  const ad = `本次招新有多位小伙伴联系我们，现在招到人啦！感谢大家的关注！
+联系我们的小伙伴都非常优秀，但是在技术栈/时间安排上可能不太契合目前枝网开发组，还是感谢你们的支持！
+
+目前项目正在有序推进，请期待后续更新！`
+
+  console.log('%c' + ad, 'color:gray; font-size:14px; font-weight: blod; line-height:1.8')
 })
 
 </script>
@@ -30,11 +37,11 @@ onMounted(() => {
         <component :is="Component" />
       </keep-alive>
     </router-view>
-    <div
+    <!-- <div
       v-if="isVisible"
       class="bg-carol rounded-l-lg p-2 transition right-0 bottom-70 animate-pulse animate-repeat-2 fixed"
       @click="showDialog"
-    >🎂</div>
+    >🎂</div>-->
     <ReturnTop />
     <el-dialog
       v-model="visible"
