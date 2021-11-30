@@ -4,3 +4,6 @@ dist
 dist-ssr
 *.local
 package-lock.json
+
+.vsocde
+.idea
