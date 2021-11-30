@@ -58,7 +58,6 @@ instance.interceptors.response.use(
     return response
   },
   (error) => {
-    message('网络错误或服务器异常,请稍后重试', 'error')
     return Promise.reject(error)
   }
 )
