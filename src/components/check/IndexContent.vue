@@ -130,18 +130,22 @@ const check = async () => {
 
   isComplete.value = false
 
-  const data = await api.check(text.value)
-  // const data = await api.allCheck(serverInfo, { data: { text: text.value }, method: 'post' })
-  response.rate = data.rate
-  response.articleArray = data.articleArray
-  response.startTime = data.startTime
-  response.lastUpdate = data.lastUpdate
+  try {
+    const data = await api.check(text.value)
+    // const data = await api.allCheck(serverInfo, { data: { text: text.value }, method: 'post' })
+    response.rate = data.rate
+    response.articleArray = data.articleArray
+    response.startTime = data.startTime
+    response.lastUpdate = data.lastUpdate
 
-  const tipMessage = (data.articleArray!.length == 0)
-    ? '没有找到重复的小作文捏'
-    : '点击复制以获取查重报告'
+    const tipMessage = (data.articleArray!.length == 0)
+      ? '没有找到重复的小作文捏'
+      : '点击复制以获取查重报告'
+    message(tipMessage)
+  } catch (err) {
+    message('网络错误或服务器异常,请稍后重试', 'error')
+  }
 
-  message(tipMessage)
   isComplete.value = true
 }
 
