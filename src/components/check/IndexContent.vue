@@ -123,6 +123,8 @@ const check = async () => {
   //   }
   // ]
 
+  isComplete.value = false
+
   const data = await api.check(text.value)
   // const data = await api.allCheck(serverInfo, { data: { text: text.value }, method: 'post' })
   response.rate = data.rate
