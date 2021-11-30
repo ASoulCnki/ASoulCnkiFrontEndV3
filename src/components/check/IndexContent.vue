@@ -101,6 +101,11 @@ const rateColor = computed(() => {
 })
 
 const check = async () => {
+  if (!isComplete.value) {
+    message('还没找完，请等一等捏', 'warning')
+    return
+  }
+
   if (!isAgreed.value) {
     message('请先阅读并同意用户协议', 'warning')
     setTimeout(() => isProtocolVisible.value = true, 500)
@@ -122,6 +127,8 @@ const check = async () => {
   //     url: 'https://asoulcnki.asia/v1/api/check'
   //   }
   // ]
+
+  isComplete.value = false
 
   const data = await api.check(text.value)
   // const data = await api.allCheck(serverInfo, { data: { text: text.value }, method: 'post' })
