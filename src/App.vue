@@ -66,7 +66,7 @@ body {
 }
 
 .main {
-  min-width: 350px;
+  min-width: 375px;
 
   @apply mx-auto min-h-full mb-16 w-full opacity-100 sm:w-5/6 xl:w-4/5 -xl:w-full;
 }
