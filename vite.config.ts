@@ -109,6 +109,9 @@ export default defineConfig({
     fs: {
       allow: ['..'],
     },
+    proxy: {
+      '/v1': 'https://asoulcnki.asia/v1',
+    },
   },
   resolve: {
     alias: [{ find: '@', replacement: '/src' }],
