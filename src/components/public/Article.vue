@@ -5,10 +5,10 @@
         <span class="mr-1 iconfont icon-user"></span>
         <a :href="userLink" target="_blank" class="hover" rel="noreferrer">
           <span class="hidden sm:inline">{{ userName }}</span>
-          <span class="sm:hidden">{{ userName.substr(0, 5) + '...' }}</span>
+          <span class="sm:hidden">{{ userName.substr(0, 5) + '…' }}</span>
         </a>
         <span
-          class="px-2 text-green-500"
+          class="pl-1 text-green-500"
           v-if="article.originId == '-1'"
         >[原创|原偷]</span>
       </div>
@@ -18,7 +18,7 @@
         </a>
       </div>
       <div class="right-button pr-2 hover copy" @click="copy">
-        <span class="iconfont icon-copy" />复制
+        <span class="iconfont icon-copy" />复制原文
       </div>
     </div>
     <div class="article-text" v-if="isMarked" v-html="markedContent" />
@@ -86,11 +86,11 @@ const userName = computed(() => props.article.author.name)
 }
 
 .article-header {
-  @apply divide-x px-1 pb-2;
+  @apply divide-x pb-2;
 }
 
 .right-button {
-  @apply cursor-pointer pl-2 inline float-right;
+  @apply cursor-pointer pl-1 inline float-right;
 }
 
 .hover {

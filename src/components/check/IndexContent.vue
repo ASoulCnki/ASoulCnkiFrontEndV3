@@ -3,15 +3,15 @@
     <Notice :content="notice" />
     <div class="text-container">
       <ul class="text-header">
-        <li :class="rateColor + ' text-sm'">
+        <li :class="rateColor">
           总复制比
           <span class="font-mono tracking-wide">{{ response.rate }}%</span>
         </li>
-        <li class="active" @click="text = ''" :disabled="!reportable">
+        <li class="px-2 active" @click="clear()" :disabled="!reportable">
           <span class="iconfont icon-clean">清空</span>
         </li>
-        <li class="active copy" @click="copy" :disabled="!reportable">
-          <span class="iconfont icon-copy">复制</span>
+        <li class="px-2 active copy" @click="copy" v-if="reportable">
+          <span class="iconfont icon-copy">查重报告</span>
         </li>
         <li @click="check" class="check">
           <span class="iconfont icon-upload">{{ isComplete ? '提交' : '查重中' }}</span>
@@ -165,10 +165,18 @@ const copy = () => {
     text: () => copyContent(response)
   })
     .on('success', () => {
-      message('复制成功,适度玩梗捏')
+      message('查重报告复制成功,适度玩梗捏')
       clip.destroy()
     })
-    .on('error', () => message('复制失败', 'error'))
+    .on('error', () => message('查重报告复制失败', 'error'))
+}
+
+const clear = () => {
+  text.value = ''
+  response.rate = '0.00'
+  response.articleArray = []
+  response.startTime = null
+  response.lastUpdate = null
 }
 </script>
 
@@ -184,11 +192,11 @@ const copy = () => {
 }
 
 .text-header {
-  @apply divide-x py-2 px-0 text-gray-500 dark:divide-gray-400;
+  @apply divide-x text-sm py-2 text-gray-500 dark:divide-gray-400 sm:text-base;
 }
 
 .text-header li {
-  @apply outline-none px-2 inline;
+  @apply outline-none px-1 inline;
 }
 
 .text-header li:first-child {
@@ -212,7 +220,7 @@ const copy = () => {
 }
 
 .active {
-  @apply cursor-pointer dark:(hover:text-yellow-500 text-gray-400) hover:text-blue-500 ;
+  @apply cursor-pointer dark:(hover:text-yellow-500 text-gray-400) hover:text-blue-500;
 }
 
 .active:disabled {
@@ -226,7 +234,7 @@ const copy = () => {
 
 .text-input {
   @apply border-none rounded-sm outline-none w-full box-border resize-none block;
-  @apply h-80 text-sm leading-relaxed tracking-widest p-2 py-1 break-all;
+  @apply h-80 text-sm leading-relaxed tracking-widest py-1 break-all;
   @apply dark:bg-gray-700 dark:text-gray-400;
 }
 
@@ -236,7 +244,6 @@ const copy = () => {
 
 .text-status-item {
   min-width: 85px;
-
   @apply text-sm text-center text-gray-500 inline dark:text-gray-400;
 }
 </style>
