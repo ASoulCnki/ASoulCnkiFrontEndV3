@@ -10,12 +10,10 @@ import { message } from '../utils'
 import { check, allCheck } from './check'
 import { ranking } from './rank'
 
-const baseURL = process.env.NODE_ENV == 'production' ? '/v1/api/' : 'https://asoulcnki.asia/v1/api/'
-
 const instance = axios.create({
-  // When prod, baseURL can replace to '/'
-  baseURL,
-  timeout: 8000, //millisecond
+  // dev server proxy in vite.config.ts
+  baseURL: '/v1/api/',
+  timeout: 12000, // 12 sec
 })
 
 instance.interceptors.request.use((conf) => {
@@ -39,14 +37,6 @@ instance.interceptors.request.use((conf) => {
 
   return conf
 })
-
-// instance.interceptors.request.use(
-//   (conf) => {
-//     const historyAPI = ''
-//     if (!conf.url || !conf.url.includes(historyAPI)) return conf
-//     if (localStorage.getItem('localStorage'))
-//     return conf
-//   })
 
 instance.interceptors.response.use(
   (response): any => {
