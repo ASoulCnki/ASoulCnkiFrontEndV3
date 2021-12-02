@@ -18,7 +18,7 @@ export const linksData: ILinks = [
       },
       {
         name: 'API文档',
-        url: 'https://github.com/ASoulCnki/ASoulCnkiBackend/blob/master/api.md',
+        url: 'https://github.com/ASoulCnki/.github/tree/master/api',
       },
     ],
   },
@@ -58,7 +58,7 @@ export const linksData: ILinks = [
       },
       {
         name: '枝江方言词典',
-        url: 'https://asoulbook.top/',
+        url: 'https://tools.asoulfan.com/zhijiangDict',
       },
       {
         name: '一个魂WIKI',
