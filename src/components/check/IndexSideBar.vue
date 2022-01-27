@@ -3,7 +3,7 @@
     <div class="space-y-3 right-item">
       <div v-for="event in eventLinks" :key="event.title">
         <p :class="`font-bold text-base ${event.extraClassName}`">
-          <a :to="event.path">{{ event.title }}</a>
+          <a :href="event.path">{{ event.title }}</a>
         </p>
         <p>{{ event.detail }}</p>
         <br />
