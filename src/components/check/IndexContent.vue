@@ -27,25 +27,19 @@
       <div class="text-status">
         <div class="text-status-item float-left">
           <label>
-            <input
-              type="checkbox"
-              class="h-3 w-4 inline-block"
-              v-model="isAgreed"
-            />
+            <input type="checkbox" class="h-3 w-4 inline-block" v-model="isAgreed" />
           </label>
           我已同意
           <a @click="isProtocolVisible = true" class="url">用户协议</a>
         </div>
         <div class="text-status-item float-right">{{ typeofText }}</div>
-        <div
-          class="text-status-item float-right"
-        >{{ text.length }}/{{ maxlength }}</div>
+        <div class="text-status-item float-right">{{ text.length }}/{{ maxlength }}</div>
       </div>
     </div>
     <el-dialog
       v-model="isProtocolVisible"
       title="枝网查重用户协议"
-      :width="null"
+      :width="'100%'"
       :lock-scroll="false"
     >
       <Protocol />
@@ -69,7 +63,7 @@ import clipboard from 'clipboard'
 const maxlength = 1000
 
 const notice = ref([
-  { message: '查重过程中遇到的问题可以向B站@查重姬Official反馈，反馈地址在页脚 ——枝网项目组' }
+  { message: '查重过程中遇到的问题可以向B站@查重姬Official反馈，反馈地址在页脚 ——枝网项目组' },
 ])
 
 let response = reactive<any>({
@@ -85,12 +79,11 @@ const input = ref<HTMLInputElement | null>(null)
 
 onStartTyping(() => {
   // @ts-ignore
-  if (!input.value?.active)
-    input.value!.focus()
+  if (!input.value?.active) input.value!.focus()
 })
 
 const reportable = computed(() => response.startTime)
-const typeofText = computed(() => isCharacterDraw(text) ? '字符画' : '普通小作文')
+const typeofText = computed(() => (isCharacterDraw(text) ? '字符画' : '普通小作文'))
 const rateColor = computed(() => {
   const percent = Number(response.rate)
   let color = 'green'
@@ -108,7 +101,7 @@ const check = async () => {
 
   if (!isAgreed.value) {
     message('请先阅读并同意用户协议', 'warning')
-    setTimeout(() => isProtocolVisible.value = true, 500)
+    setTimeout(() => (isProtocolVisible.value = true), 500)
     return
   }
 
@@ -138,9 +131,8 @@ const check = async () => {
     response.startTime = data.startTime
     response.lastUpdate = data.lastUpdate
 
-    const tipMessage = (data.articleArray!.length == 0)
-      ? '没有找到重复的小作文捏'
-      : '点击复制以获取查重报告'
+    const tipMessage =
+      data.articleArray!.length == 0 ? '没有找到重复的小作文捏' : '点击复制以获取查重报告'
     message(tipMessage)
   } catch (err) {
     message('网络错误或服务器异常,请稍后重试', 'error')
@@ -148,7 +140,6 @@ const check = async () => {
 
   isComplete.value = true
 }
-
 
 onMounted(() => {
   // agree state from localStorage
@@ -162,7 +153,7 @@ watch(isAgreed, () => {
 // copy compare report to clipboard
 const copy = () => {
   const clip = new clipboard('.copy', {
-    text: () => copyContent(response)
+    text: () => copyContent(response),
   })
     .on('success', () => {
       message('查重报告复制成功,适度玩梗捏')
@@ -192,7 +183,7 @@ const clear = () => {
 }
 
 .text-header {
-  @apply divide-x text-sm py-2 text-gray-500 dark:divide-gray-400 sm:text-base;
+  @apply divide-x text-sm py-2 text-gray-500 sm:text-base dark:divide-gray-400;
 }
 
 .text-header li {
@@ -220,7 +211,7 @@ const clear = () => {
 }
 
 .active {
-  @apply cursor-pointer dark:(hover:text-yellow-500 text-gray-400) hover:text-blue-500;
+  @apply cursor-pointer dark:(hover:text-yellow-500 text-gray-400) hover:text-blue-500 ;
 }
 
 .active:disabled {

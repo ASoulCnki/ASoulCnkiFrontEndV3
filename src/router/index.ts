@@ -3,7 +3,6 @@ import Check from '@/pages/Check.vue'
 import Rank from '@/pages/Rank.vue'
 import QA from '@/pages/QA.vue'
 import { useFavicon, useTitle } from '@vueuse/core'
-import { use } from 'element-plus/lib/locale'
 
 const routes: RouteRecordRaw[] = [
   {

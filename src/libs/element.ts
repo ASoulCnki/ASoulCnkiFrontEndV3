@@ -4,10 +4,10 @@
 
 import { ElCarousel, ElCarouselItem, ElDialog, ElMessage } from 'element-plus'
 
-import { App } from 'vue'
+import type { App } from 'vue'
 
 const Element = {
-  install(app: App) {
+  install (app: App) {
     app.use(ElCarousel)
     app.use(ElCarouselItem)
     app.use(ElDialog)

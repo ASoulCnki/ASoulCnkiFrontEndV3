@@ -5,7 +5,7 @@ import { convert } from './check/index'
 import storage from './storage'
 import { copyContent, isCharacterDraw } from './check'
 
-export function message(
+export function message (
   message: string,
   type: 'info' | 'success' | 'warning' | 'error' = 'success'
 ) {
@@ -49,7 +49,7 @@ export interface Article {
  * @param {Object} reply reply Array in check and ranking
  * @returns {Object} renamed reply Array
  */
-function handleRelated(s: reply): Article {
+function handleRelated (s: reply): Article {
   return {
     id: s.rpid,
     type: s.type_id,
@@ -74,7 +74,7 @@ function handleRelated(s: reply): Article {
  * @param {Number} type comment type available: 1, 11, 17, 12
  * @returns {String} a bili comment link
  */
-function parseURL(oid: string, dynamic_id: string, rpid: string, type: number) {
+function parseURL (oid: string, dynamic_id: string, rpid: string, type: number) {
   const VIDEO_URL = 'www.bilibili.com/video/av'
   const CV_URL = 'www.bilibili.com/read/cv'
   const DYNAMIC_URL = 't.bilibili.com/'

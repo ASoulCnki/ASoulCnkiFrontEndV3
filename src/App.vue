@@ -1,8 +1,8 @@
 <script lang="ts" setup>
 import { useDuring } from './hooks'
-import { computed, ref, onMounted } from 'vue';
+import { computed, ref, onMounted } from 'vue'
 import ReturnTop from '@/components/public/ReturnTop/index.vue'
-import Birthday from './components/activities/BirthdayDialog.vue';
+import Birthday from './components/activities/BirthdayDialog.vue'
 const isDuring = useDuring('2021-10-28', '2021-11-3')
 const isVisible = ref(true)
 
@@ -13,7 +13,7 @@ const hideDialog = () => {
   isVisible.value = false
 }
 
-const showDialog = () => isVisible.value = true
+const showDialog = () => (isVisible.value = true)
 
 onMounted(() => {
   if (localStorage.getItem('useActivityOnce') === 'true') {
@@ -27,7 +27,6 @@ onMounted(() => {
 
   console.log('%c' + ad, 'color:gray; font-size:14px; font-weight: blod; line-height:1.8')
 })
-
 </script>
 
 <template>
@@ -46,7 +45,7 @@ onMounted(() => {
     <el-dialog
       v-model="visible"
       title="🎉祝我们的小狼公主珈乐生日快乐"
-      :width="null"
+      :width="'100%'"
       :before-close="hideDialog"
       :lock-scroll="false"
     >
@@ -58,8 +57,8 @@ onMounted(() => {
 </template>
 
 <style>
-@import url("@/assets/css/unit-fixed.css");
-@import url("@/assets/css/fix-element.css");
+@import url('@/assets/css/unit-fixed.css');
+@import url('@/assets/css/fix-element.css');
 body {
   @apply h-full bg-gray-100;
   @apply dark:bg-gray-900 dark:text-gray-400;
